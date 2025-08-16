@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "bg-background font-sans antialiased",
+          "bg-secondary font-sans antialiased",
           geistSans.variable,
           geistMono.variable
         )}
