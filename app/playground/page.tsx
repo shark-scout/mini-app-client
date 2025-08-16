@@ -23,7 +23,9 @@ function ContextPlayground() {
     <div className="flex flex-col gap-2">
       <p>Context:</p>
       {isSDKLoaded ? (
-        <pre>{JSON.stringify(context, null, 2) || "Undefined"}</pre>
+        <pre className="text-sm">
+          {JSON.stringify(context, null, 2) || "Undefined"}
+        </pre>
       ) : (
         <p>Loading...</p>
       )}
@@ -53,6 +55,7 @@ function TrendsPlayground() {
               trendsMap.set(key, {
                 tokenSymbol: erc20Transfer.token_symbol,
                 tokenAddress: erc20Transfer.address,
+                tokenLogo: erc20Transfer.token_logo, // Fallback to a default logo if null
                 transactionHashes: [tx.hash],
                 userFids: followingList
                   .filter((user) =>
@@ -90,7 +93,9 @@ function TrendsPlayground() {
   return (
     <div className="flex flex-col items-start gap-2">
       <p>Trends:</p>
-      <pre>{JSON.stringify(trends, null, 2) || "Undefined"}</pre>
+      <pre className="text-sm">
+        {JSON.stringify(trends, null, 2) || "Undefined"}
+      </pre>
     </div>
   );
 }
