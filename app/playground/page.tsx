@@ -37,7 +37,7 @@ function TrendsPlayground() {
   const [trends, setTrends] = useState<Trend[] | undefined>();
 
   useEffect(() => {
-    const trendsMap = new Map();
+    const trendsMap = new Map<string, Trend>();
 
     transactions.forEach((transactionGroup) => {
       const { address, transactions } = transactionGroup;
@@ -64,7 +64,9 @@ function TrendsPlayground() {
               });
             } else {
               const existingTrend = trendsMap.get(key);
-              existingTrend.transactionHashes.push(tx.hash);
+              if (existingTrend) {
+                existingTrend.transactionHashes.push(tx.hash);
+              }
               const userFids = followingList
                 .filter((user) =>
                   (
@@ -73,7 +75,7 @@ function TrendsPlayground() {
                 )
                 .map((user) => user.user.fid);
               userFids.forEach((fid) => {
-                if (!existingTrend.userFids.includes(fid)) {
+                if (existingTrend && !existingTrend.userFids.includes(fid)) {
                   existingTrend.userFids.push(fid);
                 }
               });
