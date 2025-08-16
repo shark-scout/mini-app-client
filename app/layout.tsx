@@ -1,3 +1,5 @@
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import { MiniAppProvider } from "@/components/mini-app-provider";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -36,13 +38,17 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "bg-background font-sans antialiased",
           geistSans.variable,
           geistMono.variable
         )}
       >
         <MiniAppProvider>
-          {children}
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </div>
           <Toaster />
         </MiniAppProvider>
       </body>

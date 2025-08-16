@@ -1,7 +1,9 @@
 export const siteConfig = {
+  emoji: "🦈",
   name: "SharkScout",
   description: "...", // TODO: Fill in
   links: {
-    farcaster: "https://answer-2-earn.vercel.app/",
+    github: "https://github.com/shark-scout",
+    farcaster: "https://farcaster.xyz/kiv1n.eth",
   },
 };
