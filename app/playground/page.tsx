@@ -8,12 +8,12 @@ export default function PlaygroundPage() {
   console.log("Context:", context);
 
   return (
-    <div>
+    <main className="max-w-xl mx-auto px-4 py-8">
       {isSDKLoaded ? (
         <p>Context: {JSON.stringify(context, null, 2)}</p>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </main>
   );
 }
