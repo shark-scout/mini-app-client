@@ -6,9 +6,9 @@ import { Separator } from "../ui/separator";
 
 export function TrendCard(props: { trend: Trend }) {
   return (
-    <div className="w-full bg-background flex flex-row gap-4 border rounded-2xl p-4">
+    <div className="w-full bg-card flex flex-row gap-6 border rounded-2xl shadow p-6">
       {/* Left part */}
-      <Avatar className="size-16">
+      <Avatar className="size-16 ring-4 ring-primary">
         <AvatarImage src={props.trend.token.logo || ""} />
         <AvatarFallback>
           {props.trend.token.symbol.slice(0, 3).toUpperCase()}
@@ -55,14 +55,8 @@ export function TrendCard(props: { trend: Trend }) {
         </div>
         {/* Indicators */}
         <div className="flex flex-row gap-4 mt-4">
-          <div className="bg-secondary flex flex-col items-center gap-1 px-3 py-2 border rounded-xl">
-            <p className="text-sm">Transactions</p>
-            <p className="text-xl font-bold">
-              {props.trend.transactions.length}
-            </p>
-          </div>
           {props.trend.volume && (
-            <div className="bg-secondary flex flex-col items-center gap-1 px-3 py-2 border rounded-xl">
+            <div className="bg-primary text-primary-foreground flex flex-col items-center gap-1 px-3 py-2 rounded-xl">
               <p className="text-sm">Volume</p>
               <p className="text-xl font-bold">
                 $
@@ -73,6 +67,12 @@ export function TrendCard(props: { trend: Trend }) {
               </p>
             </div>
           )}
+          <div className="bg-accent text-accent-foreground flex flex-col items-center gap-1 px-3 py-2 rounded-xl">
+            <p className="text-sm">Transactions</p>
+            <p className="text-xl font-bold">
+              {props.trend.transactions.length}
+            </p>
+          </div>
         </div>
       </div>
     </div>

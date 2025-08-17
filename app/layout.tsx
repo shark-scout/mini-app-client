@@ -1,20 +1,21 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { MiniAppProvider } from "@/components/mini-app-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fira_Code, Outfit } from "next/font/google";
 import { Toaster } from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const firaCode = Fira_Code({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -35,22 +36,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-secondary font-sans antialiased",
-          geistSans.variable,
-          geistMono.variable
+          "bg-background font-sans antialiased",
+          outfit.variable,
+          firaCode.variable
         )}
       >
-        <MiniAppProvider>
-          <div className="min-h-screen flex flex-col">
-            <Header />
-            <div className="flex-1">{children}</div>
-            <Footer />
-          </div>
-          <Toaster />
-        </MiniAppProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          disableTransitionOnChange
+        >
+          <MiniAppProvider>
+            <div className="min-h-screen flex flex-col">
+              <Header />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </div>
+            <Toaster />
+          </MiniAppProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
