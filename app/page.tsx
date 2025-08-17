@@ -54,8 +54,8 @@ export default function HomePage() {
           Gm, {context?.user.displayName || "shark"} 👋
         </h1>
         <p className="mt-2">
-          We turn your following list into real-time market insights, so you can
-          spot trends before they go mainstream
+          We turn your following list on Base & Farcaster into real-time market
+          insights, so you can spot trends before they go mainstream
         </p>
       </div>
       <div className="border-2 border-primary rounded-2xl px-4 py-2 mt-4">
