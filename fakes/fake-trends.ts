@@ -8,7 +8,7 @@ export const fakeTrends: Trend[] = [
       logo: "https://logo.moralis.io/0x2105_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_08900d18ed100f2bad6fc53388a71159.png",
     },
     volume: {
-      usd: 1247832.45,
+      usd: 1247.45,
     },
     transactions: [
       {
@@ -70,7 +70,7 @@ export const fakeTrends: Trend[] = [
       logo: "https://logo.moralis.io/0x2105_0x9cb41fd9dc6891bae8187029461bfaadf6cc0c69_1733eb1432b158b37b188136d5a9c9b0.webp",
     },
     volume: {
-      usd: 89543.21,
+      usd: 895.21,
     },
     transactions: [
       {
@@ -104,7 +104,7 @@ export const fakeTrends: Trend[] = [
       logo: "https://logo.moralis.io/0x2105_0xd080ed3c74a20250a2c9821885203034acd2d5ae_dd8540aa0bb2a1d6fa70492982f1b039.webp",
     },
     volume: {
-      usd: 156789.67,
+      usd: 1567.67,
     },
     transactions: [
       {
@@ -131,7 +131,7 @@ export const fakeTrends: Trend[] = [
       logo: null,
     },
     volume: {
-      usd: 234567.89,
+      usd: 2345.89,
     },
     transactions: [
       {
@@ -154,7 +154,7 @@ export const fakeTrends: Trend[] = [
       logo: "https://logo.moralis.io/0x2105_0x2b5050f01d64fbb3e4ac44dc07f0732bfb5ecadf_5e8bb3db00635d07468f4a4d616bf599.png",
     },
     volume: {
-      usd: 987654.32,
+      usd: 9876.32,
     },
     transactions: [
       {
@@ -177,7 +177,7 @@ export const fakeTrends: Trend[] = [
       logo: null,
     },
     volume: {
-      usd: 1456789.12,
+      usd: 14567.12,
     },
     transactions: [
       {
@@ -200,7 +200,7 @@ export const fakeTrends: Trend[] = [
       logo: null,
     },
     volume: {
-      usd: 2345678.9,
+      usd: 23456.9,
     },
     transactions: [
       {
@@ -223,7 +223,7 @@ export const fakeTrends: Trend[] = [
       logo: "https://logo.moralis.io/0x2105_0x4ed4e862860bed51a9570b96d89af5e1b0efefed_041100bd9ef402a5af0858c68e9788d9.png",
     },
     volume: {
-      usd: 567890.45,
+      usd: 5678.45,
     },
     transactions: [
       {
@@ -247,7 +247,7 @@ export const fakeTrends: Trend[] = [
       logo: "https://logo.moralis.io/0x2105_0x5ba8d32579a4497c12d327289a103c3ad5b64eb1_64e89a9eb866ba561fce50cb3b48a6f7.webp",
     },
     volume: {
-      usd: 34567.89,
+      usd: 345.89,
     },
     transactions: [
       {
@@ -271,7 +271,7 @@ export const fakeTrends: Trend[] = [
       logo: "https://logo.moralis.io/0x2105_0x712f43b21cf3e1b189c27678c0f551c08c01d150_33ac03a72e446d9fe1db62d231c26025.jpg",
     },
     volume: {
-      usd: 123456.78,
+      usd: 1234.78,
     },
     transactions: [
       {
