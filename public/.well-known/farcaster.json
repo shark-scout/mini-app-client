@@ -1,0 +1,15 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjExNTk4NjksInR5cGUiOiJhdXRoIiwia2V5IjoiMHg0NGYxMzlBODg1QjYyZmNFNEUwNjU2ZEIzYzFCQTBDNjVCMzc3NWFkIn0",
+    "payload": "eyJkb21haW4iOiJtaW5pYXBwLnNoYXJrc2NvdXQudGVjaCJ9",
+    "signature": "eOSLZJtWp5CWzuY/PI5cUa0QOc+K9Pbbc+2+pJ1zU6gvwb3EPawsjsBo4qPcytbMQquLYoifx79OcqvpeuOBKRw="
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "SharkScout",
+    "iconUrl": "https://miniapp.sharkscout.tech/icon.png",
+    "homeUrl": "https://miniapp.sharkscout.tech/",
+    "splashImageUrl": "https://miniapp.sharkscout.tech/logo.png",
+    "splashBackgroundColor": "#f8f9fa"
+  }
+}
