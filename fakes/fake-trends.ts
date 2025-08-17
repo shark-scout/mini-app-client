@@ -39,7 +39,7 @@ export const fakeTrends: Trend[] = [
     users: [
       {
         fid: 346162,
-        username: "79125183911",
+        username: "shayed71",
         pfp_url:
           "https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/f5265e7a-e2d2-4e57-2436-b85cde84ea00/original",
       },
@@ -85,7 +85,7 @@ export const fakeTrends: Trend[] = [
     users: [
       {
         fid: 346162,
-        username: "79125183911",
+        username: "shayed71",
         pfp_url:
           "https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/f5265e7a-e2d2-4e57-2436-b85cde84ea00/original",
       },
