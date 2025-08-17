@@ -23,6 +23,7 @@ export function Header() {
         </div>
         {/* Right part */}
         <div className="flex flex-1 items-center justify-end gap-4">
+          {/* TODO: Add user avatar */}
           <DropdownMenu>
             <DropdownMenuTrigger
               className="text-sm font-medium text-muted-foreground"
