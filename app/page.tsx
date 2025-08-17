@@ -3,7 +3,9 @@
 import EntityList from "@/components/entity-list";
 import { TrendCard } from "@/components/trends/trend-card";
 import { Separator } from "@/components/ui/separator";
-import { fakesConfig } from "@/config/fakes";
+import { fakeFid } from "@/fakes/fake-data";
+import { fakeFollowingListUsers } from "@/fakes/fake-following-list-users";
+import { fakeTrends } from "@/fakes/fake-trends";
 import useError from "@/hooks/use-error";
 import { FollowingListUser } from "@/types/following-list-user";
 import { Price } from "@/types/price";
@@ -15,7 +17,7 @@ import { useEffect, useState } from "react";
 // TODO: Implement
 async function loadFollowingListUsers(): Promise<FollowingListUser[]> {
   console.log("Loading following list users...");
-  return fakesConfig.followingListUsers;
+  return fakeFollowingListUsers;
 }
 
 async function loadFollowingListUserTransactions(
@@ -225,7 +227,7 @@ async function loadTrendVolumes(
 }
 
 export default function HomePage() {
-  const fid = fakesConfig.fid;
+  const fid = fakeFid;
   const { handleError } = useError();
   const [trends, setTrends] = useState<Trend[] | undefined>();
 
@@ -255,7 +257,7 @@ export default function HomePage() {
 
       // setTrends(trends);
 
-      setTrends(fakesConfig.trends);
+      setTrends(fakeTrends);
     } catch (error) {
       handleError(error, "Failed to load data, try again later");
     }
