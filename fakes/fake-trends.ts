@@ -3,9 +3,9 @@ import { Trend } from "@/types/trend";
 export const fakeTrends: Trend[] = [
   {
     token: {
-      symbol: "USDC",
-      address: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
-      logo: "https://logo.moralis.io/0x2105_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_08900d18ed100f2bad6fc53388a71159.png",
+      symbol: "DEGEN",
+      address: "0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
+      logo: "https://logo.moralis.io/0x2105_0x4ed4e862860bed51a9570b96d89af5e1b0efefed_041100bd9ef402a5af0858c68e9788d9.png",
     },
     volume: {
       usd: 1247.45,
@@ -213,30 +213,6 @@ export const fakeTrends: Trend[] = [
         fid: 296658,
         username: "tiistar",
         pfp_url: "https://i.imgur.com/JQeVZg5.jpg",
-      },
-    ],
-  },
-  {
-    token: {
-      symbol: "DEGEN",
-      address: "0x4ed4e862860bed51a9570b96d89af5e1b0efefed",
-      logo: "https://logo.moralis.io/0x2105_0x4ed4e862860bed51a9570b96d89af5e1b0efefed_041100bd9ef402a5af0858c68e9788d9.png",
-    },
-    volume: {
-      usd: 5678.45,
-    },
-    transactions: [
-      {
-        hash: "0xcdd37e81a09c62452c2ff7fe0fb41ead3e8739a4c8bab45cdfd8b681ff6b8b73",
-        valueFormatted: "3",
-      },
-    ],
-    users: [
-      {
-        fid: 16590,
-        username: "ninarass",
-        pfp_url:
-          "https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/fb2c852a-ca21-475e-3753-c29f224cf400/original",
       },
     ],
   },
