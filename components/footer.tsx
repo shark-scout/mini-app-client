@@ -10,7 +10,7 @@ export function Footer() {
             href={siteConfig.links.farcaster}
             target="_blank"
             rel="noreferrer"
-            className="font-medium underline underline-offset-4"
+            className="font-medium text-primary"
           >
             kiv1n
           </a>{" "}
