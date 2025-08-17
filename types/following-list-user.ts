@@ -18,6 +18,16 @@ export type FollowingListUser = {
     profile: {
       bio: {
         text: string;
+        mentioned_channels?: {
+          object: string;
+          id: string;
+          name: string;
+          image_url: string;
+        }[];
+        mentioned_channels_ranges?: {
+          start: number;
+          end: number;
+        }[];
       };
       banner?: {
         url: string;

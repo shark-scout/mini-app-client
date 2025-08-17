@@ -105,5 +105,15 @@ export type Transaction = {
   contract_interactions?: ContractInteractions;
   summary: string;
   possible_spam: boolean;
-  category: "token swap" | "receive" | "token receive" | "approve" | "send";
+  category:
+    | "token swap"
+    | "receive"
+    | "token receive"
+    | "approve"
+    | "send"
+    | "token send"
+    | "withdraw"
+    | "airdrop"
+    | "contract interaction"
+    | "nft receive";
 };

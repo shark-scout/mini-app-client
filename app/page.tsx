@@ -5,13 +5,14 @@ import { TrendCard } from "@/components/trends/trend-card";
 import { Separator } from "@/components/ui/separator";
 import { fakesConfig } from "@/config/fakes";
 import useError from "@/hooks/use-error";
+import { FollowingListUser } from "@/types/following-list-user";
 import { Price } from "@/types/price";
 import { Transaction } from "@/types/transaction";
 import { Trend } from "@/types/trend";
-import { FollowingListUser } from "@/types/following-list-user";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+// TODO: Implement
 async function loadFollowingListUsers(): Promise<FollowingListUser[]> {
   console.log("Loading following list users...");
   return fakesConfig.followingListUsers;
@@ -26,7 +27,37 @@ async function loadFollowingListUserTransactions(
   }[]
 > {
   console.log("Loading following list user transactions...");
-  return fakesConfig.followingListUserTransactions;
+
+  const followingListUserTransactions: {
+    address: string;
+    transactions: Transaction[];
+  }[] = [];
+
+  // Calculate epoch timestamp for 2 days ago (current time minus 48 hours)
+  const fromDate = Math.floor(
+    (Date.now() - 24 * 60 * 60 * 1000) / 1000
+  ).toString();
+
+  // Fetch transaction history for each address
+  for (const user of followingListUsers) {
+    for (const address of user.user.verified_addresses.eth_addresses) {
+      const { data } = await axios.get(
+        `https://deep-index.moralis.io/api/v2.2/wallets/${address}/history?chain=base&from_date=${fromDate}&order=DESC`,
+        {
+          headers: {
+            "X-API-Key": process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+          },
+        }
+      );
+
+      followingListUserTransactions.push({
+        address,
+        transactions: data.result,
+      });
+    }
+  }
+
+  return followingListUserTransactions;
 }
 
 async function loadPrices(trends: Trend[]): Promise<Price[]> {
@@ -202,27 +233,29 @@ export default function HomePage() {
     try {
       console.log("Loading data...");
 
-      // Load following list users and their transactions
-      const followingListUsers = await loadFollowingListUsers();
-      const followingListUserTransactions =
-        await loadFollowingListUserTransactions(followingListUsers);
+      // // Load following list users and their transactions
+      // const followingListUsers = await loadFollowingListUsers();
+      // const followingListUserTransactions =
+      //   await loadFollowingListUserTransactions(followingListUsers);
 
-      // Load trends
-      let trends: Trend[] = loadTrends(
-        followingListUsers,
-        followingListUserTransactions
-      );
+      // // Load trends
+      // let trends: Trend[] = loadTrends(
+      //   followingListUsers,
+      //   followingListUserTransactions
+      // );
 
-      // Load prices
-      const prices = await loadPrices(trends);
+      // // Load prices
+      // const prices = await loadPrices(trends);
 
-      // Load trend volumes
-      trends = await loadTrendVolumes(trends, prices);
+      // // Load trend volumes
+      // trends = await loadTrendVolumes(trends, prices);
 
-      // Sort trends by transactions number
-      trends.sort((a, b) => b.transactions.length - a.transactions.length);
+      // // Sort trends by transactions number
+      // trends.sort((a, b) => b.users.length - a.users.length);
 
-      setTrends(trends);
+      // setTrends(trends);
+
+      setTrends(fakesConfig.trends);
     } catch (error) {
       handleError(error, "Failed to load data, try again later");
     }
