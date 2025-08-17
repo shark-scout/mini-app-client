@@ -30,20 +30,19 @@ export function TrendCard(props: { trend: Trend }) {
           </p>
         </Link>
         <Separator className="my-4" />
-        {/* Users */}
-        <div className="flex flex-row items-center gap-3">
-          {/* User avatars */}
-          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-            {props.trend.users.slice(0, 3).map((user) => (
-              <Avatar key={user.fid}>
-                <AvatarImage src={user.pfp_url} alt={`@${user.username}`} />
-                <AvatarFallback>
-                  {user.username.slice(0, 2).toUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-            ))}
-          </div>
-          {/* User names */}
+        {/* User avatars */}
+        <div className="*:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background flex -space-x-2">
+          {props.trend.users.slice(0, 5).map((user) => (
+            <Avatar key={user.fid}>
+              <AvatarImage src={user.pfp_url} alt={`@${user.username}`} />
+              <AvatarFallback>
+                {user.username.slice(0, 3).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+          ))}
+        </div>
+        {/* User names */}
+        <div className="mt-2">
           <p className="text-sm">
             Bought by{" "}
             <span className="font-semibold">
@@ -53,6 +52,7 @@ export function TrendCard(props: { trend: Trend }) {
             </span>
           </p>
         </div>
+
         {/* Indicators */}
         <div className="flex flex-row gap-4 mt-4">
           {props.trend.volume && (
