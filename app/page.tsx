@@ -279,14 +279,17 @@ export default function HomePage() {
 
   return (
     <main className="max-w-xl mx-auto px-4 py-8">
-      <h1 className="text-xl font-bold">Welcome to SharkScout!</h1>
+      <h1 className="text-2xl font-bold">Welcome to SharkScout!</h1>
+      <p className="mt-2">...</p>
       <Separator className="my-4" />
-      <Tabs defaultValue="account" className="w-full">
+      {/* <Tabs defaultValue="trends"> */}
+      <Tabs defaultValue="ai-insights">
         <TabsList>
-          <TabsTrigger value="account">📈 Trends / 24 hours</TabsTrigger>
-          <TabsTrigger value="password">💡 AI insights</TabsTrigger>
+          <TabsTrigger value="trends">📈 Trends / 24 hours</TabsTrigger>
+          <TabsTrigger value="insights">💡 AI insights</TabsTrigger>
         </TabsList>
-        <TabsContent value="account">
+        {/* Trends tab */}
+        <TabsContent value="trends">
           <EntityList<Trend>
             entities={trends}
             renderEntityCard={(trend, i) => <TrendCard key={i} trend={trend} />}
@@ -294,10 +297,59 @@ export default function HomePage() {
             className="mt-4"
           />
         </TabsContent>
-        <TabsContent value="password">
-          <p>⌛</p>
-          <p>Soon</p>
-          <p>Insights discovered just for you by our AI</p>
+        {/* Insights tab */}
+        <TabsContent value="insights">
+          <div className="flex flex-col gap-2">
+            <div className="w-full bg-card flex flex-col items-center text-center gap-4 border rounded-2xl shadow px-4 py-10">
+              <p className="text-4xl">⌛</p>
+              <div>
+                <p className="text-xl font-bold">Soon</p>
+                <p>Insights discovered just for you by our AI</p>
+              </div>
+            </div>
+            <div className="opacity-100 w-full bg-primary text-primary-foreground flex flex-row gap-3 border rounded-2xl shadow p-3">
+              <p className="text-xl">🔔</p>
+              <p className="text-sm">
+                15% of people you follow bought $ENA in the last 48h, with an
+                average wallet increase of +23% in holdings
+              </p>
+            </div>
+            <div className="opacity-80 w-full bg-accent text-accent-foreground flex flex-row gap-3 border rounded-2xl shadow p-3">
+              <p className="text-xl">🔔</p>
+              <p className="text-sm">
+                A cluster of 12 accounts you follow all bought $DEGEN within a
+                3-hour window
+              </p>
+            </div>
+            <div className="opacity-60 w-full bg-primary text-primary-foreground flex flex-row gap-3 border rounded-2xl shadow p-3">
+              <p className="text-xl">🔔</p>
+              <p className="text-sm">
+                3 collectors from your following list sold Azuki below floor —
+                potential bearish sentiment
+              </p>
+            </div>
+            <div className="opacity-40 w-full bg-accent text-accent-foreground flex flex-row gap-3 border rounded-2xl shadow p-3">
+              <p className="text-xl">🔔</p>
+              <p className="text-sm">
+                15% of people you follow bought $ENA in the last 48h, with an
+                average wallet increase of +23% in holdings
+              </p>
+            </div>
+            <div className="opacity-20 w-full bg-primary text-primary-foreground flex flex-row gap-3 border rounded-2xl shadow p-3">
+              <p className="text-xl">🔔</p>
+              <p className="text-sm">
+                Three friends you follow staked into a Base chain farm offering
+                60% APY on $USDC
+              </p>
+            </div>
+            <div className="opacity-10 w-full bg-accent text-accent-foreground flex flex-row gap-3 border rounded-2xl shadow p-3">
+              <p className="text-xl">🔔</p>
+              <p className="text-sm">
+                3 high-performing traders in your following list just sold over
+                $2M in $ARB within 12 hours
+              </p>
+            </div>
+          </div>
         </TabsContent>
       </Tabs>
     </main>
