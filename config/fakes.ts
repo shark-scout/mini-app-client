@@ -1,8 +1,10 @@
+import { FollowingListUser } from "@/types/following-list-user";
+import { Transaction } from "@/types/transaction";
 import { Trend } from "@/types/trend";
 
 const fid = 1159869;
 
-const followingList = [
+const followingListUsers: FollowingListUser[] = [
   {
     object: "follow",
     app: { fid: "9152" },
@@ -270,7 +272,10 @@ const followingList = [
   },
 ];
 
-const transactions = [
+const followingListUserTransactions: {
+  address: string;
+  transactions: Transaction[];
+}[] = [
   {
     address: "0xfa63aca138164ced380ec59bc7f2d6345bbe628f",
     transactions: [
@@ -2630,71 +2635,11 @@ const transactions = [
   },
 ];
 
-const trends: Trend[] = [
-  {
-    tokenSymbol: "ZFI",
-    tokenAddress: "0xd080ed3c74a20250a2c9821885203034acd2d5ae",
-    tokenLogo:
-      "https://logo.moralis.io/0x2105_0xd080ed3c74a20250a2c9821885203034acd2d5ae_dd8540aa0bb2a1d6fa70492982f1b039.webp",
-    transactionHashes: [
-      "0x5ac0bc16ecbeba692439ddc7b30e3149084b6c8221f39a4efaababf25a126488",
-      "0x019c0484fe5d2f64792cb2ac4b039fb099972eeb8bc75d693fbc1ada9e68c947",
-    ],
-    userFids: [296658],
-  },
-  {
-    tokenSymbol: "propaganda",
-    tokenAddress: "0xfe9ede4478ad200a2186175a81f9ce9f0e679270",
-    tokenLogo: null,
-    transactionHashes: [
-      "0x4966e767263e6424eb80b4a9415361b0c977e2c27870d4178d9eddfee2a5f9af",
-    ],
-    userFids: [296658],
-  },
-  {
-    tokenSymbol: "QR",
-    tokenAddress: "0x2b5050f01d64fbb3e4ac44dc07f0732bfb5ecadf",
-    tokenLogo:
-      "https://logo.moralis.io/0x2105_0x2b5050f01d64fbb3e4ac44dc07f0732bfb5ecadf_5e8bb3db00635d07468f4a4d616bf599.png",
-    transactionHashes: [
-      "0xdb7543cf3659ff009c2dbf77223ab7d6d299c01c33b5eadf3a69d374962e12ae",
-    ],
-    userFids: [296658],
-  },
-  {
-    tokenSymbol: "THOSMUR",
-    tokenAddress: "0x4a125fa0eaa33f74fb011c5437f6e78738bd0b07",
-    tokenLogo: null,
-    transactionHashes: [
-      "0x025794c897c4a62d31473c8479558c7f6663410681994f35d51c61f1396eac1b",
-    ],
-    userFids: [296658],
-  },
-  {
-    tokenSymbol: "USDC",
-    tokenAddress: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
-    tokenLogo:
-      "https://logo.moralis.io/0x2105_0x833589fcd6edb6e08f4c7c32d4f71b54bda02913_08900d18ed100f2bad6fc53388a71159.png",
-    transactionHashes: [
-      "0x87beff9791d2686e18ddf41fc96903965cf175cf21660d54746abc407fe5a5c5",
-    ],
-    userFids: [346162],
-  },
-  {
-    tokenSymbol: "noice",
-    tokenAddress: "0x9cb41fd9dc6891bae8187029461bfaadf6cc0c69",
-    tokenLogo:
-      "https://logo.moralis.io/0x2105_0x9cb41fd9dc6891bae8187029461bfaadf6cc0c69_1733eb1432b158b37b188136d5a9c9b0.webp",
-    transactionHashes: [
-      "0x0715621bca12d3011dcc7ed03932607713d8d9369bf9c04d5ae37bc600212a5f",
-    ],
-    userFids: [346162],
-  },
-];
+const trends: Trend[] = [];
 
 export const fakesConfig = {
   fid,
-  followingList,
-  transactions,
+  followingListUsers,
+  followingListUserTransactions,
   trends,
 };
