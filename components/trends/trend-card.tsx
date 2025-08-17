@@ -6,9 +6,9 @@ import { Separator } from "../ui/separator";
 
 export function TrendCard(props: { trend: Trend }) {
   return (
-    <div className="w-full bg-card flex flex-row gap-6 border rounded-2xl shadow p-6">
+    <div className="w-full bg-card flex flex-row gap-4 border rounded-2xl shadow p-6">
       {/* Left part */}
-      <Avatar className="size-16 ring-4 ring-primary">
+      <Avatar className="size-8 ring-2 ring-primary">
         <AvatarImage src={props.trend.token.logo || ""} />
         <AvatarFallback>
           {props.trend.token.symbol.slice(0, 3).toUpperCase()}
@@ -17,7 +17,7 @@ export function TrendCard(props: { trend: Trend }) {
       {/* Right part */}
       <div className="flex-1 flex flex-col items-start">
         {/* Token symbol */}
-        <h4 className="text-xl font-semibold tracking-tight mt-1">
+        <h4 className="text-xl font-semibold tracking-tigh">
           {props.trend.token.symbol}
         </h4>
         {/* Token address */}
@@ -52,13 +52,12 @@ export function TrendCard(props: { trend: Trend }) {
             </span>
           </p>
         </div>
-
         {/* Indicators */}
         <div className="flex flex-row gap-4 mt-4">
           {props.trend.volume && (
-            <div className="bg-primary text-primary-foreground flex flex-col items-center gap-1 px-3 py-2 rounded-xl">
+            <div className="bg-primary text-primary-foreground flex flex-col items-center px-3 py-2 rounded-xl">
               <p className="text-sm">Volume</p>
-              <p className="text-xl font-bold">
+              <p className="text-lg font-bold">
                 $
                 {props.trend.volume.usd.toLocaleString("en-US", {
                   minimumFractionDigits: 2,
@@ -67,9 +66,9 @@ export function TrendCard(props: { trend: Trend }) {
               </p>
             </div>
           )}
-          <div className="bg-accent text-accent-foreground flex flex-col items-center gap-1 px-3 py-2 rounded-xl">
+          <div className="bg-accent text-accent-foreground flex flex-col items-center px-3 py-2 rounded-xl">
             <p className="text-sm">Transactions</p>
-            <p className="text-xl font-bold">
+            <p className="text-lg font-bold">
               {props.trend.transactions.length}
             </p>
           </div>
