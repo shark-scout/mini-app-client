@@ -3,6 +3,7 @@
 import EntityList from "@/components/entity-list";
 import { TrendCard } from "@/components/trends/trend-card";
 import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fakeFid } from "@/fakes/fake-data";
 import { fakeFollowingListUsers } from "@/fakes/fake-following-list-users";
 import { fakeTrends } from "@/fakes/fake-trends";
@@ -280,12 +281,25 @@ export default function HomePage() {
     <main className="max-w-xl mx-auto px-4 py-8">
       <h1 className="text-xl font-bold">Welcome to SharkScout!</h1>
       <Separator className="my-4" />
-      <EntityList<Trend>
-        entities={trends}
-        renderEntityCard={(trend, i) => <TrendCard key={i} trend={trend} />}
-        noEntitiesText="No trends yet..."
-        className="mt-4"
-      />
+      <Tabs defaultValue="account" className="w-full">
+        <TabsList>
+          <TabsTrigger value="account">📈 Trends / 24 hours</TabsTrigger>
+          <TabsTrigger value="password">💡 AI insights</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">
+          <EntityList<Trend>
+            entities={trends}
+            renderEntityCard={(trend, i) => <TrendCard key={i} trend={trend} />}
+            noEntitiesText="No trends yet..."
+            className="mt-4"
+          />
+        </TabsContent>
+        <TabsContent value="password">
+          <p>⌛</p>
+          <p>Soon</p>
+          <p>Insights discovered just for you by our AI</p>
+        </TabsContent>
+      </Tabs>
     </main>
   );
 }
