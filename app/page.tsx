@@ -49,6 +49,7 @@ export default function HomePage() {
 
   return (
     <main className="max-w-xl mx-auto px-4 py-8">
+      {/* Welcome message */}
       <div>
         <h1 className="text-2xl font-bold">
           Gm, {context?.user.displayName || "shark"} 👋
@@ -58,9 +59,10 @@ export default function HomePage() {
           insights, so you can spot trends before they go mainstream
         </p>
       </div>
+      {/* Closed beta message */}
       <div className="border-2 border-primary rounded-2xl px-4 py-2 mt-4">
         <p className="text-sm">
-          Want access? Contact{" "}
+          SharkScout in closed beta. Want in? Just reach out to{" "}
           <Link
             href={siteConfig.links.farcaster}
             target="_blank"
@@ -69,10 +71,11 @@ export default function HomePage() {
           >
             @kiv1n
           </Link>{" "}
-          to unlock real data
+          for access!
         </p>
       </div>
       <Separator className="my-4" />
+      {/* Tabs */}
       <Tabs defaultValue="trends">
         <TabsList className="w-full h-12">
           <TabsTrigger value="trends">
