@@ -3,8 +3,11 @@ import { Trend } from "@/types/trend";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
+import { Button } from "../ui/button";
+import { toast } from "sonner";
+import { userHasAccess } from "@/lib/access";
 
-export function TrendCard(props: { trend: Trend }) {
+export function TrendCard(props: { trend: Trend; fid?: number }) {
   return (
     <div className="w-full bg-card flex flex-row gap-4 border rounded-2xl shadow p-6">
       {/* Left part */}
@@ -73,6 +76,26 @@ export function TrendCard(props: { trend: Trend }) {
             </p>
           </div>
         </div>
+        {/* Actions */}
+        {!userHasAccess(props.fid) && (
+          <>
+            <Separator className="my-4" />
+            <div className="flex flex-row gap-2">
+              <Button
+                variant="outline"
+                onClick={() => toast.info("Available to beta users only")}
+              >
+                ↗️ Share
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => toast.info("Available to beta users only")}
+              >
+                👀 Details
+              </Button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
