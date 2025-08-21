@@ -1,19 +1,21 @@
 export type Trend = {
+  type: "buy" | "sell";
   token: {
-    symbol: string;
     address: string;
-    logo: string | null;
+    name: string;
+    symbol: string;
+    icon: string;
   };
   transactions: {
+    address: string; // User's address
     hash: string;
-    valueFormatted: string;
+    value: number | "";
   }[];
   users: {
     fid: number;
     username: string;
     pfp_url: string;
+    addresses: string[];
   }[];
-  volume?: {
-    usd: number;
-  };
+  value: number;
 };

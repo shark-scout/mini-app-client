@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 
 export function InsightCard(props: {
   insight: Insight;
-  fid?: number;
+  fid: number | undefined;
   className?: ClassValue;
 }) {
   return (

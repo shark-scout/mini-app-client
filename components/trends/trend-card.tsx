@@ -7,28 +7,45 @@ import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { userHasAccess } from "@/lib/access";
 
-export function TrendCard(props: { trend: Trend; fid?: number }) {
+export function TrendCard(props: { trend: Trend; fid: number | undefined }) {
+  if (["USDT", "USDC", "ETH", "USDbC"].includes(props.trend.token.symbol)) {
+    return undefined;
+  }
+
   return (
     <div className="w-full bg-card flex flex-row gap-4 border rounded-2xl shadow p-6">
       {/* Left part */}
       <Avatar className="size-8 ring-2 ring-primary">
-        <AvatarImage src={props.trend.token.logo || ""} />
-        <AvatarFallback>
+        <AvatarImage src={props.trend.token.icon || ""} />
+        <AvatarFallback className="text-xs">
           {props.trend.token.symbol.slice(0, 3).toUpperCase()}
         </AvatarFallback>
       </Avatar>
       {/* Right part */}
       <div className="flex-1 flex flex-col items-start">
-        {/* Token symbol */}
-        <h4 className="text-xl font-semibold tracking-tigh">
-          {props.trend.token.symbol}
-        </h4>
+        <div className="flex flex-row items-center gap-2">
+          {/* Token symbol */}
+          <h4 className="text-xl font-semibold tracking-tigh">
+            {props.trend.token.symbol.length > 15
+              ? props.trend.token.symbol.slice(0, 15) + "..."
+              : props.trend.token.symbol}
+          </h4>
+          {props.trend.type === "buy" ? (
+            <div className="bg-accent rounded-lg px-1.5 py-0.5">
+              <p className="text-sm font-bold">Buy</p>
+            </div>
+          ) : (
+            <div className="bg-primary rounded-lg px-1.5 py-0.5">
+              <p className="text-sm text-primary-foreground font-bold">Sell</p>
+            </div>
+          )}
+        </div>
         {/* Token address */}
         <Link
           href={`https://basescan.org/token/${props.trend.token.address}`}
           target="_blank"
         >
-          <p className="text-sm text-primary">
+          <p className="text-sm text-primary mt-1">
             {addressToShortString(props.trend.token.address)} · Base
           </p>
         </Link>
@@ -47,7 +64,7 @@ export function TrendCard(props: { trend: Trend; fid?: number }) {
         {/* User names */}
         <div className="mt-2">
           <p className="text-sm">
-            Bought by{" "}
+            {props.trend.type === "buy" ? "Bought" : "Sold"} by{" "}
             <span className="font-semibold">
               {props.trend.users[0]?.username}
               {props.trend.users.length > 1 &&
@@ -57,18 +74,18 @@ export function TrendCard(props: { trend: Trend; fid?: number }) {
         </div>
         {/* Indicators */}
         <div className="flex flex-row gap-4 mt-4">
-          {props.trend.volume && (
-            <div className="bg-primary text-primary-foreground flex flex-col items-center px-3 py-2 rounded-xl">
-              <p className="text-sm">Volume</p>
-              <p className="text-lg font-bold">
-                $
-                {props.trend.volume.usd.toLocaleString("en-US", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-              </p>
-            </div>
-          )}
+          <div className="bg-primary text-primary-foreground flex flex-col items-center px-3 py-2 rounded-xl">
+            <p className="text-sm">Volume</p>
+            <p className="text-lg font-bold">
+              {Number(props.trend.value) > 0
+                ? "$" +
+                  props.trend.value.toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })
+                : "N/A"}
+            </p>
+          </div>
           <div className="bg-accent text-accent-foreground flex flex-col items-center px-3 py-2 rounded-xl">
             <p className="text-sm">Transactions</p>
             <p className="text-lg font-bold">

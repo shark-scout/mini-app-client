@@ -7,8 +7,8 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { siteConfig } from "@/config/site";
 import useError from "@/hooks/use-error";
-import { userHasAccess } from "@/lib/access";
-import { loadUserInsights, loadUserTrends } from "@/lib/data";
+import { loadUserDashboard } from "@/lib/data";
+import { Dashboard } from "@/types/dashboard";
 import { Insight } from "@/types/insight";
 import { Trend } from "@/types/trend";
 import { useMiniApp } from "@neynar/react";
@@ -19,26 +19,20 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
   const { isSDKLoaded, context } = useMiniApp();
   const { handleError } = useError();
-  const [trends, setTrends] = useState<Trend[] | undefined>();
-  const [insights, setInsights] = useState<Insight[] | undefined>();
+  const [dashboard, setDashboard] = useState<Dashboard | undefined>();
 
   useEffect(() => {
     if (isSDKLoaded) {
-      loadUserTrends(context?.user.fid)
-        .then((trends) => setTrends(trends))
+      loadUserDashboard(context?.user.fid)
+        .then((dashboard) => setDashboard(dashboard))
         .catch((error) => {
-          handleError(error, "Failed to load trends, try again later");
-        });
-      loadUserInsights(context?.user.fid)
-        .then((insights) => setInsights(insights))
-        .catch((error) => {
-          handleError(error, "Failed to load insights, try again later");
+          handleError(error, "Failed to load dashboard, try again later");
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSDKLoaded, context]);
 
-  if (!trends || !insights) {
+  if (!dashboard) {
     return (
       <main className="flex flex-col items-center justify-center gap-2 px-4 py-8">
         <Loader2Icon className="animate-spin text-primary" />
@@ -62,7 +56,17 @@ export default function HomePage() {
       {/* Closed beta message */}
       <div className="border-2 border-primary rounded-2xl px-4 py-2 mt-4">
         <p className="text-sm">
-          SharkScout in closed beta. Want in? Just reach out to{" "}
+          SharkScout is in closed beta. The data you see comes from the{" "}
+          <Link
+            href="https://farcaster.xyz/~/channel/sharks"
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-primary"
+          >
+            Sharks
+          </Link>{" "}
+          community. Want personalized trends and insights from the people you
+          follow? Reach out to{" "}
           <Link
             href={siteConfig.links.farcaster}
             target="_blank"
@@ -78,28 +82,22 @@ export default function HomePage() {
       {/* Tabs */}
       <Tabs defaultValue="trends">
         <TabsList className="w-full h-12">
-          <TabsTrigger value="trends">
-            📈 Trends{" "}
-            {!userHasAccess(context?.user.fid) && (
-              <div className="bg-accent rounded-lg px-1.5 py-0.5">
-                <p className="text-sm font-bold">DEMO</p>
-              </div>
-            )}
-          </TabsTrigger>
-          <TabsTrigger value="insights">
-            💡 AI insights{" "}
-            {!userHasAccess(context?.user.fid) && (
-              <div className="bg-accent rounded-lg px-1.5 py-0.5">
-                <p className="text-sm font-bold">DEMO</p>
-              </div>
-            )}
-          </TabsTrigger>
+          <TabsTrigger value="trends">📈 Trends / 24 hours</TabsTrigger>
+          <TabsTrigger value="insights">💡 AI insights </TabsTrigger>
         </TabsList>
         {/* Trends tab */}
         <TabsContent value="trends">
           <EntityList<Trend>
-            entities={trends}
-            renderEntityCard={(trend, i) => <TrendCard key={i} trend={trend} />}
+            entities={dashboard.trends
+              .sort(
+                (a, b) =>
+                  b.users.length - a.users.length ||
+                  Number(b.value) - Number(a.value)
+              )
+              .slice(0, 50)}
+            renderEntityCard={(trend, i) => (
+              <TrendCard key={i} trend={trend} fid={context?.user.fid} />
+            )}
             noEntitiesText="No trends yet..."
             className="mt-4"
           />
@@ -107,11 +105,12 @@ export default function HomePage() {
         {/* Insights tab */}
         <TabsContent value="insights">
           <EntityList<Insight>
-            entities={insights}
+            entities={dashboard.insights}
             renderEntityCard={(insight, i) => (
               <InsightCard
                 key={i}
                 insight={insight}
+                fid={context?.user.fid}
                 className={
                   i % 2 === 1
                     ? "bg-accent text-accent-foreground"
