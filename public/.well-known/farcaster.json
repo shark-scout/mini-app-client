@@ -4,6 +4,9 @@
     "payload": "eyJkb21haW4iOiJtaW5pYXBwLnNoYXJrc2NvdXQudGVjaCJ9",
     "signature": "eOSLZJtWp5CWzuY/PI5cUa0QOc+K9Pbbc+2+pJ1zU6gvwb3EPawsjsBo4qPcytbMQquLYoifx79OcqvpeuOBKRw="
   },
+  "baseBuilder": {
+    "allowedAddresses": ["0xC8603BD79D982C5BEF17Aea1f52bC47FB0cF2B40"]
+  },
   "miniapp": {
     "version": "1",
     "name": "SharkScout",
