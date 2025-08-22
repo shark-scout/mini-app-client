@@ -1,7 +1,12 @@
 import { Trend } from "@/types/trend";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { ClassValue } from "clsx";
+import { cn } from "@/lib/utils";
 
-export function TrendCard(props: { trend: Trend }) {
+export function TrendCard(props: {
+  trend: Trend;
+  avatarClassName?: ClassValue;
+}) {
   if (["USDT", "USDC", "ETH", "USDbC"].includes(props.trend.token.symbol)) {
     return undefined;
   }
@@ -12,7 +17,9 @@ export function TrendCard(props: { trend: Trend }) {
   return (
     <div className="w-full bg-card flex flex-row gap-4 border rounded-2xl shadow p-6">
       {/* Left part */}
-      <Avatar className="size-8 ring-2 ring-primary">
+      <Avatar
+        className={cn("size-8 ring-2 ring-primary", props.avatarClassName)}
+      >
         <AvatarImage src={props.trend.token.icon || ""} />
         <AvatarFallback className="text-xs">
           {props.trend.token.symbol.slice(0, 3).toUpperCase()}

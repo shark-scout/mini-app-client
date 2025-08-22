@@ -101,7 +101,9 @@ export default function HomePage() {
         <TabsContent value="buyTrends">
           <EntityList<Trend>
             entities={buyTrends.slice(0, 50)}
-            renderEntityCard={(trend, i) => <TrendCard key={i} trend={trend} />}
+            renderEntityCard={(trend, i) => (
+              <TrendCard key={i} trend={trend} avatarClassName="ring-accent" />
+            )}
             noEntitiesText="No buy trends yet..."
             className="mt-4"
           />
@@ -120,16 +122,7 @@ export default function HomePage() {
           <EntityList<Insight>
             entities={dashboard.insights}
             renderEntityCard={(insight, i) => (
-              <InsightCard
-                key={i}
-                insight={insight}
-                fid={context?.user.fid}
-                className={
-                  i % 2 === 1
-                    ? "bg-accent text-accent-foreground"
-                    : "bg-primary text-primary-foreground"
-                }
-              />
+              <InsightCard key={i} insight={insight} fid={context?.user.fid} />
             )}
             noEntitiesText="No insights yet..."
             className="mt-4"

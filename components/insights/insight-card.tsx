@@ -1,24 +1,21 @@
 import { userHasAccess } from "@/lib/access";
-import { cn } from "@/lib/utils";
 import { Insight } from "@/types/insight";
-import { ClassValue } from "clsx";
 import { toast } from "sonner";
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import { Button } from "../ui/button";
 
 export function InsightCard(props: {
   insight: Insight;
   fid: number | undefined;
-  className?: ClassValue;
 }) {
   return (
-    <div
-      className={cn(
-        "w-full bg-card flex flex-row gap-2 border rounded-2xl shadow p-4",
-        props.className
-      )}
-    >
+    <div className="w-full bg-card flex flex-row gap-4 border rounded-2xl shadow p-6">
       {/* Left part */}
-      <p className="text-xl">{props.insight.emoji}</p>
+      <Avatar className="size-8">
+        <AvatarFallback className="text-sm bg-accent">
+          {props.insight.emoji}
+        </AvatarFallback>
+      </Avatar>
       {/* Right part */}
       <div className="flex-1 flex flex-col items-start">
         {/* Title */}
@@ -27,9 +24,9 @@ export function InsightCard(props: {
         {!userHasAccess(props.fid) && (
           <div className="flex flex-row gap-2 mt-4">
             <Button
-              variant="secondary"
+              variant="outline"
+              size="sm"
               onClick={() => toast.info("Available to beta users only")}
-              className="text-secondary-foreground"
             >
               ↗️ Share
             </Button>
