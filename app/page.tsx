@@ -91,7 +91,7 @@ export default function HomePage() {
       </div>
       <Separator className="my-4" />
       {/* Tabs */}
-      <Tabs defaultValue="trends">
+      <Tabs defaultValue="buyTrends">
         <TabsList className="w-full h-12">
           <TabsTrigger value="buyTrends">🟢 Buying</TabsTrigger>
           <TabsTrigger value="sellTrends">🔴 Selling</TabsTrigger>
