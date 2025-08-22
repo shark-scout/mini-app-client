@@ -93,8 +93,8 @@ export default function HomePage() {
       {/* Tabs */}
       <Tabs defaultValue="buyTrends">
         <TabsList className="w-full h-12">
-          <TabsTrigger value="buyTrends">🟢 Buying</TabsTrigger>
-          <TabsTrigger value="sellTrends">🔴 Selling</TabsTrigger>
+          <TabsTrigger value="buyTrends">🟢 Buy Trends</TabsTrigger>
+          <TabsTrigger value="sellTrends">🔴 Sell Trends</TabsTrigger>
           <TabsTrigger value="insights">💡 Insights</TabsTrigger>
         </TabsList>
         {/* Buy trends tab */}
