@@ -41,6 +41,13 @@ export default function HomePage() {
     );
   }
 
+  const trends = dashboard.trends.sort(
+    (a, b) =>
+      b.users.length - a.users.length || Number(b.value) - Number(a.value)
+  );
+  const buyTrends = trends.filter((trend) => trend.type === "buy");
+  const sellTrends = trends.filter((trend) => trend.type === "sell");
+
   return (
     <main className="max-w-xl mx-auto px-4 py-8">
       {/* Welcome message */}
@@ -55,8 +62,9 @@ export default function HomePage() {
       </div>
       {/* Closed beta message */}
       <div className="border-2 border-primary rounded-2xl px-4 py-2 mt-4">
-        <p className="text-sm">
-          SharkScout is in closed beta. The data you see comes from the{" "}
+        <p className="text-sm">SharkScout is in closed beta.</p>
+        <p className="text-sm mt-2">
+          The data you see comes from the{" "}
           <Link
             href="https://farcaster.xyz/~/channel/sharks"
             target="_blank"
@@ -65,8 +73,11 @@ export default function HomePage() {
           >
             Sharks
           </Link>{" "}
-          community. Want personalized trends and insights from the people you
-          follow? Reach out to{" "}
+          community for the last 24 hours.
+        </p>
+        <p className="text-sm mt-2">
+          Want personalized trends and insights from the people you follow?
+          Reach out to{" "}
           <Link
             href={siteConfig.links.farcaster}
             target="_blank"
@@ -82,23 +93,25 @@ export default function HomePage() {
       {/* Tabs */}
       <Tabs defaultValue="trends">
         <TabsList className="w-full h-12">
-          <TabsTrigger value="trends">📈 Trends / 24 hours</TabsTrigger>
-          <TabsTrigger value="insights">💡 AI insights </TabsTrigger>
+          <TabsTrigger value="buyTrends">🟢 Buying</TabsTrigger>
+          <TabsTrigger value="sellTrends">🔴 Selling</TabsTrigger>
+          <TabsTrigger value="insights">💡 Insights</TabsTrigger>
         </TabsList>
-        {/* Trends tab */}
-        <TabsContent value="trends">
+        {/* Buy trends tab */}
+        <TabsContent value="buyTrends">
           <EntityList<Trend>
-            entities={dashboard.trends
-              .sort(
-                (a, b) =>
-                  b.users.length - a.users.length ||
-                  Number(b.value) - Number(a.value)
-              )
-              .slice(0, 50)}
-            renderEntityCard={(trend, i) => (
-              <TrendCard key={i} trend={trend} fid={context?.user.fid} />
-            )}
-            noEntitiesText="No trends yet..."
+            entities={buyTrends.slice(0, 50)}
+            renderEntityCard={(trend, i) => <TrendCard key={i} trend={trend} />}
+            noEntitiesText="No buy trends yet..."
+            className="mt-4"
+          />
+        </TabsContent>
+        {/* Sell trends tab */}
+        <TabsContent value="sellTrends">
+          <EntityList<Trend>
+            entities={sellTrends.slice(0, 50)}
+            renderEntityCard={(trend, i) => <TrendCard key={i} trend={trend} />}
+            noEntitiesText="No sell trends yet..."
             className="mt-4"
           />
         </TabsContent>
