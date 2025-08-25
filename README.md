@@ -1,4 +1,4 @@
-# SharkScout - Mini App
+# SharkScout - Mini App Client
 
 ### Commands
 
