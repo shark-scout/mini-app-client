@@ -15,3 +15,13 @@ export function errorToString(error: unknown): string {
   }
   return message;
 }
+
+export function taskBalancesUsdValueToDisplayData(balancesUsdValue: number): {
+  image: string;
+} {
+  if (balancesUsdValue > 500) {
+    return { image: "/" };
+  } else {
+    return { image: "/" };
+  }
+}
