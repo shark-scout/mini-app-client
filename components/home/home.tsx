@@ -7,7 +7,11 @@ export function Home(props: {
   task: Task | null;
   onTaskUpdate: (task: Task) => void;
 }) {
-  if (props.task && props.task.status === TaskStatus.COMPLETED) {
+  if (
+    props.task &&
+    props.task.status === TaskStatus.COMPLETED &&
+    props.task.result
+  ) {
     return <HomeCompletedTask task={props.task} />;
   }
 
