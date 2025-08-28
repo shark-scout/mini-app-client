@@ -15,8 +15,3 @@ export function errorToString(error: unknown): string {
   }
   return message;
 }
-
-export function addressToShortString(address: string): string {
-  if (!address || address.length < 10) return address;
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-}

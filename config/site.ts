@@ -1,9 +1,8 @@
 export const siteConfig = {
   emoji: "🦈",
   name: "SharkScout",
-  description: "Onchain insights from people you follow on Base & Farcaster",
+  description: "Insights from your social graph on Base & Farcaster",
   links: {
-    github: "https://github.com/shark-scout",
     farcaster: "https://farcaster.xyz/kiv1n.eth",
   },
 };

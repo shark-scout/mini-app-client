@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 export function Header() {
   return (
@@ -12,12 +13,12 @@ export function Header() {
               {siteConfig.emoji} {siteConfig.name}{" "}
             </p>
           </Link>
-          <div className="bg-accent flex items-center rounded-lg px-2 py-1">
-            <p className="text-sm font-bold text-accent-foreground">Beta</p>
-          </div>
         </div>
         {/* Right part */}
-        <div className="flex flex-1 items-center justify-end gap-4"></div>
+        <div className="flex flex-1 items-center justify-end gap-4">
+          {/* TODO: Display a block about premium features */}
+          <Button variant="outline">Get Premium</Button>
+        </div>
       </div>
     </header>
   );
