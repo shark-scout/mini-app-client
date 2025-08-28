@@ -5,12 +5,12 @@ import { useMiniApp } from "@neynar/react";
 export default function PlaygroundUtilsPage() {
   return (
     <main className="max-w-xl mx-auto px-4 py-8">
-      <ContextPlayground />
+      <Context />
     </main>
   );
 }
 
-function ContextPlayground() {
+function Context() {
   const { isSDKLoaded, context } = useMiniApp();
 
   return (
