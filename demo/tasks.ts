@@ -16,7 +16,7 @@ const completedTask: Task = {
     addresses: 40,
     createdBalances: 40,
     balances: 40,
-    balancesUsdValue: 1234.56,
+    balancesUsdValue: 1234.56789,
   },
 };
 

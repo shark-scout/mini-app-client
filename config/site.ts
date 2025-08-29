@@ -1,4 +1,5 @@
 export const siteConfig = {
+  url: "https://miniapp.sharkscout.tech",
   emoji: "🦈",
   name: "SharkScout",
   description: "Insights from your social graph on Base & Farcaster",
