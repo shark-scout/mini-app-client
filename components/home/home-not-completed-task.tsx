@@ -6,7 +6,7 @@ export function HomeNotCompletedTask() {
   return (
     <div className="flex flex-col items-center">
       <Image
-        src="/images/cover-placeholder.png"
+        src="/images/placeholder.png"
         alt="Cover"
         priority={false}
         width="100"
