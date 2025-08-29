@@ -7,10 +7,24 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 
 export function HomeCompletedTask(props: { task: Task }) {
-  const { actions } = useMiniApp();
+  const { isSDKLoaded, actions } = useMiniApp();
+
   const displayData = balancesUsdValueToDisplayData(
     props.task.result?.balancesUsdValue
   );
+
+  async function handleShareResult() {
+    if (!isSDKLoaded) {
+      return;
+    }
+
+    await actions.composeCast({
+      text: `${displayData.postPart1}\n\n${displayData.postPart2}\n\nWhat's your network's cap?`,
+      embeds: [
+        `${appConfig.url}/utils/sharing?balancesUsdValue=${props.task.result?.balancesUsdValue}`,
+      ],
+    });
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -27,17 +41,7 @@ export function HomeCompletedTask(props: { task: Task }) {
       {/* TODO: Add disclaimer */}
       <p className="text-center mt-4">{displayData.subtitle1}</p>
       <p className="text-center mt-4">{displayData.subtitle2}</p>
-      <Button
-        onClick={() =>
-          actions.composeCast({
-            text: `${displayData.postPart1}\n\n${displayData.postPart2}\n\nWhat's your network's cap?`,
-            embeds: [
-              `${appConfig.url}/utils/sharing?balancesUsdValue=${props.task.result?.balancesUsdValue}`,
-            ],
-          })
-        }
-        className="mt-6"
-      >
+      <Button onClick={handleShareResult} className="mt-6">
         <ShareIcon /> Share The Result
       </Button>
       {/* Add promo block */}
