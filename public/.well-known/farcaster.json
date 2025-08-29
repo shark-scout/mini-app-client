@@ -12,6 +12,7 @@
     "name": "SharkScout",
     "iconUrl": "https://miniapp.sharkscout.tech/icon.png",
     "homeUrl": "https://miniapp.sharkscout.tech/",
+    "webhookUrl": "https://api.neynar.com/f/app/e511cf26-1773-4e86-b52f-f7cc6aab1e12/event",
     "splashImageUrl": "https://miniapp.sharkscout.tech/logo.png",
     "splashBackgroundColor": "#f8f9fa"
   }

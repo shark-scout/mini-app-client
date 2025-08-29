@@ -1,8 +1,31 @@
+import { useMiniApp } from "@neynar/react";
 import { BellIcon } from "lucide-react";
-import { Button } from "../ui/button";
 import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Button } from "../ui/button";
 
 export function HomeNotCompletedTask() {
+  const { isSDKLoaded, context, actions } = useMiniApp();
+  const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(
+    context?.client.added || false
+  );
+
+  console.log({ added: context?.client.added, notificationsEnabled });
+
+  async function handleEnableNotifications() {
+    if (!isSDKLoaded) {
+      toast.info("SDK is not loaded yet");
+      return;
+    }
+
+    const result = await actions.addMiniApp();
+    if (result.notificationDetails) {
+      setNotificationsEnabled(true);
+      toast.success("Notifications enabled");
+    }
+  }
+
   return (
     <div className="flex flex-col items-center">
       {/* TODO: Display a real image */}
@@ -20,14 +43,22 @@ export function HomeNotCompletedTask() {
         Querying thousands of wallets takes time, but the result is worth the
         wait
       </p>
-      <p className="text-center mt-4">
-        Hit the button below, and we&apos;ll serve you a notification when
-        it&apos;s ready
-      </p>
-      <Button className="mt-6">
-        <BellIcon />
-        Enable Notifications
-      </Button>
+      {notificationsEnabled ? (
+        <p className="text-center mt-4">
+          We&apos;ll serve you a notification when it&apos;s ready
+        </p>
+      ) : (
+        <>
+          <p className="text-center mt-4">
+            Hit the button below, and we&apos;ll serve you a notification when
+            it&apos;s ready
+          </p>
+          <Button onClick={handleEnableNotifications} className="mt-6">
+            <BellIcon />
+            Enable Notifications
+          </Button>
+        </>
+      )}
     </div>
   );
 }
