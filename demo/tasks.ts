@@ -1,5 +1,7 @@
 import { Task, TaskStatus } from "@/types/task";
 
+const notLoadedTask = undefined;
+
 const notFoundTask = null;
 
 const pendingTask: Task = {
@@ -19,6 +21,7 @@ const completedTask: Task = {
 };
 
 export const demoTasks = {
+  notLoaded: notLoadedTask,
   notFound: notFoundTask,
   pending: pendingTask,
   completed: completedTask,

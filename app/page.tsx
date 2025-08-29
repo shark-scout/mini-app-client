@@ -17,7 +17,7 @@ export default function HomePage() {
   // TODO: Implement
   useEffect(() => {
     if (isSDKLoaded) {
-      setTask(demoTasks.notFound);
+      setTask(demoTasks.notLoaded);
     }
   }, [isSDKLoaded, context]);
 
