@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { appConfig } from "@/config/app";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
@@ -10,7 +10,7 @@ export function Header() {
         <div className="flex gap-2 md:gap-10">
           <Link href="/" className="flex items-center space-x-3">
             <p className="font-bold">
-              {siteConfig.emoji} {siteConfig.name}{" "}
+              {appConfig.emoji} {appConfig.name}{" "}
             </p>
           </Link>
         </div>

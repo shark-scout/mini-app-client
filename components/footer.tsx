@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { appConfig } from "@/config/app";
 
 export function Footer() {
   return (
@@ -7,7 +7,7 @@ export function Footer() {
         <p className="text-balance text-center md:text-left text-sm leading-loose text-muted-foreground">
           Built by{" "}
           <a
-            href={siteConfig.links.farcaster}
+            href={appConfig.links.farcaster}
             target="_blank"
             rel="noreferrer"
             className="font-medium text-primary"

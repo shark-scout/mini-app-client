@@ -2,7 +2,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { MiniAppProvider } from "@/components/mini-app-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import { siteConfig } from "@/config/site";
+import { appConfig } from "@/config/app";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import type { Metadata } from "next";
@@ -21,10 +21,10 @@ const firaCode = Fira_Code({
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteConfig.name} - ${siteConfig.description}`,
-    template: `%s - ${siteConfig.name}`,
+    default: `${appConfig.name} - ${appConfig.description}`,
+    template: `%s - ${appConfig.name}`,
   },
-  description: siteConfig.description,
+  description: appConfig.description,
   icons: {
     icon: "/favicon.ico",
   },

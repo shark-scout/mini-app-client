@@ -1,4 +1,4 @@
-export const siteConfig = {
+export const appConfig = {
   url: "https://miniapp.sharkscout.tech",
   emoji: "🦈",
   name: "SharkScout",

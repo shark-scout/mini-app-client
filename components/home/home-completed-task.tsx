@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { appConfig } from "@/config/app";
 import { balancesUsdValueToDisplayData } from "@/lib/converters";
 import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
@@ -32,7 +32,7 @@ export function HomeCompletedTask(props: { task: Task }) {
           actions.composeCast({
             text: `${displayData.postPart1}\n\n${displayData.postPart2}\n\nWhat's your network's cap?`,
             embeds: [
-              `${siteConfig.url}/utils/sharing?balancesUsdValue=${props.task.result?.balancesUsdValue}`,
+              `${appConfig.url}/utils/sharing?balancesUsdValue=${props.task.result?.balancesUsdValue}`,
             ],
           })
         }

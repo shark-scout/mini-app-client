@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
+import { appConfig } from "@/config/app";
 import { balancesUsdValueToDisplayData } from "@/lib/converters";
 import { HomeIcon } from "lucide-react";
 import { Metadata } from "next";
@@ -17,14 +17,14 @@ export async function generateMetadata({
 
   const fcMetadata = {
     version: "1",
-    imageUrl: `${siteConfig.url}${displayData.imagePath}`,
+    imageUrl: `${appConfig.url}${displayData.imagePath}`,
     button: {
       title: `Calculate Your Network Cap`,
       action: {
         type: "launch_miniapp",
-        url: siteConfig.url,
-        name: siteConfig.name,
-        splashImageUrl: `${siteConfig.url}/logo.png`,
+        url: appConfig.url,
+        name: appConfig.name,
+        splashImageUrl: `${appConfig.url}/logo.png`,
         splashBackgroundColor: "#f8f9fa",
       },
     },
