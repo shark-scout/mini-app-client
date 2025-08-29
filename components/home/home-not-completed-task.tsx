@@ -5,6 +5,7 @@ import Image from "next/image";
 export function HomeNotCompletedTask() {
   return (
     <div className="flex flex-col items-center">
+      {/* TODO: Display a real image */}
       <Image
         src="/images/placeholder.png"
         alt="Cover"

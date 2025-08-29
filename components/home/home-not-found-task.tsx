@@ -2,10 +2,10 @@ import { demoTasks } from "@/demo/tasks";
 import useError from "@/hooks/use-error";
 import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
-import { ArrowRight, Loader2Icon, RocketIcon } from "lucide-react";
+import { Loader2Icon, RocketIcon } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import Image from "next/image";
 
 export function HomeNotFoundTask(props: { onTaskStart: (task: Task) => void }) {
   const { context } = useMiniApp();
@@ -26,6 +26,7 @@ export function HomeNotFoundTask(props: { onTaskStart: (task: Task) => void }) {
 
   return (
     <div className="flex flex-col items-center">
+      {/* TODO: Display a real image */}
       <Image
         src="/images/placeholder.png"
         alt="Cover"
