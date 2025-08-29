@@ -11,8 +11,6 @@ export default function HomePage() {
   const { isSDKLoaded, context } = useMiniApp();
   const [task, setTask] = useState<Task | null | undefined>();
 
-  console.log({ task });
-
   // Load task data
   // TODO: Implement
   useEffect(() => {
