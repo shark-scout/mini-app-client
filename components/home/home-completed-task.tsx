@@ -4,6 +4,7 @@ import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
 import { ShareIcon } from "lucide-react";
 import Image from "next/image";
+import { toast } from "sonner";
 import { Button } from "../ui/button";
 
 export function HomeCompletedTask(props: { task: Task }) {
@@ -15,15 +16,19 @@ export function HomeCompletedTask(props: { task: Task }) {
 
   async function handleShareResult() {
     if (!isSDKLoaded) {
+      toast.info("SDK is not loaded yet");
       return;
     }
 
-    await actions.composeCast({
+    const result = await actions.composeCast({
       text: `${displayData.postPart1}\n\n${displayData.postPart2}\n\nWhat's your network's cap?`,
       embeds: [
         `${appConfig.url}/utils/sharing?balancesUsdValue=${props.task.result?.balancesUsdValue}`,
       ],
     });
+    if (result.cast) {
+      toast.success("Result shared");
+    }
   }
 
   return (
