@@ -1,11 +1,12 @@
 import { appConfig } from "@/config/app";
 
+// TODO: Use Farcaster action to open user's profile
 export function Footer() {
   return (
     <footer className="bg-background border-t py-6 md:py-0">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 md:h-24">
         <p className="text-balance text-center md:text-left text-sm leading-loose text-muted-foreground">
-          Built by{" "}
+          Built by
           <a
             href={appConfig.links.farcaster}
             target="_blank"
