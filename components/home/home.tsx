@@ -7,12 +7,12 @@ export function Home(props: {
   task: Task | null;
   onTaskUpdate: (task: Task) => void;
 }) {
-  if (
-    props.task &&
-    props.task.status === TaskStatus.COMPLETED &&
-    props.task.result
-  ) {
-    return <HomeCompletedTask task={props.task} />;
+  if (props.task && props.task.status === TaskStatus.COMPLETED) {
+    return (
+      <HomeCompletedTask
+        balancesUsdValue={props.task.result?.balancesUsdValue}
+      />
+    );
   }
 
   if (props.task && props.task.status !== TaskStatus.COMPLETED) {

@@ -1,18 +1,19 @@
+"use client";
+
 import { appConfig } from "@/config/app";
 import { balancesUsdValueToDisplayData } from "@/lib/converters";
-import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
 import { ShareIcon } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 
-export function HomeCompletedTask(props: { task: Task }) {
+export function HomeCompletedTask(props: {
+  balancesUsdValue?: number | string;
+}) {
   const { isSDKLoaded, context, actions } = useMiniApp();
 
-  const displayData = balancesUsdValueToDisplayData(
-    props.task.result?.balancesUsdValue
-  );
+  const displayData = balancesUsdValueToDisplayData(props.balancesUsdValue);
 
   async function handleShareResult() {
     if (!isSDKLoaded) {
@@ -28,7 +29,7 @@ export function HomeCompletedTask(props: { task: Task }) {
     const result = await actions.composeCast({
       text: `${displayData.postPart1}\n\n${displayData.postPart2}\n\nWhat's your network's cap?`,
       embeds: [
-        `${appConfig.url}/utils/sharing?balancesUsdValue=${props.task.result?.balancesUsdValue}`,
+        `${appConfig.url}/utils/sharing?balancesUsdValue=${props.balancesUsdValue}`,
       ],
     });
     if (result?.cast) {
@@ -38,6 +39,7 @@ export function HomeCompletedTask(props: { task: Task }) {
 
   return (
     <div className="flex flex-col items-center">
+      {/* TODO: Add accent border */}
       <Image
         src={displayData.imagePath}
         alt="Cover"

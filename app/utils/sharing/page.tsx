@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { HomeCompletedTask } from "@/components/home/home-completed-task";
 import { appConfig } from "@/config/app";
 import { balancesUsdValueToDisplayData } from "@/lib/converters";
-import { HomeIcon } from "lucide-react";
 import { Metadata } from "next";
-import Link from "next/link";
 
 type Props = {
   searchParams: Promise<{ balancesUsdValue?: string }>;
@@ -38,16 +36,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function SharingUtilsPage() {
+export default async function SharingUtilsPage({ searchParams }: Props) {
+  const { balancesUsdValue } = await searchParams;
+
   return (
-    <main className="flex flex-col items-center justify-center gap-2 px-4 py-8">
-      <div className="flex flex-col items-center">
-        <Link href="/">
-          <Button>
-            <HomeIcon /> Go To Home
-          </Button>
-        </Link>
-      </div>
+    <main className="max-w-xl mx-auto px-4 py-8">
+      <HomeCompletedTask balancesUsdValue={balancesUsdValue} />
     </main>
   );
 }
