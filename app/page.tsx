@@ -55,6 +55,10 @@ export default function HomePage() {
   useEffect(() => {
     const fid = context?.user.fid;
     if (isSDKLoaded && fid) {
+      // Identify the user (creates/updates user profile)
+      posthog.identify(fid.toString(), { fid: fid });
+
+      // Register as super property (includes in all events)
       posthog.register({ fid: fid });
     }
   }, [isSDKLoaded, context?.user.fid]);
