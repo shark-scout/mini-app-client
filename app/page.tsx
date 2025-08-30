@@ -16,6 +16,10 @@ export default function HomePage() {
 
   // Load task data
   useEffect(() => {
+    // TODO: Remove this code before release
+    if (process.env.NODE_ENV !== "development") {
+      return;
+    }
     const fid = context?.client.clientFid;
     if (isSDKLoaded && fid) {
       axios
