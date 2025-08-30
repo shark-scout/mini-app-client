@@ -3,8 +3,10 @@ export const appConfig = {
   emoji: "🦈",
   name: "SharkScout",
   description: "Insights from your social graph on Base & Farcaster",
-  links: {
-    farcaster: "https://farcaster.xyz/kiv1n.eth",
+  developer: {
+    name: "@kiv1n",
+    fid: 1159869,
+    url: "https://farcaster.xyz/kiv1n.eth",
   },
   buttonTitle: "Calculate Your Network Cap",
   splashImageUrl: "https://miniapp.sharkscout.tech/logo.png",
