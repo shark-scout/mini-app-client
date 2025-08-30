@@ -39,7 +39,6 @@ export function HomeCompletedTask(props: {
 
   return (
     <div className="flex flex-col items-center">
-      {/* TODO: Add accent border */}
       <Image
         src={displayData.imagePath}
         alt="Cover"
