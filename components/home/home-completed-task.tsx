@@ -47,7 +47,7 @@ export function HomeCompletedTask(props: {
         width="100"
         height="100"
         sizes="100vw"
-        className="w-full rounded-xl"
+        className="w-full rounded-md"
       />
       <h1 className="text-2xl font-bold mt-6">It&apos;s unbelievable 🤯</h1>
       {/* TODO: Add disclaimer */}

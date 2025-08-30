@@ -41,15 +41,14 @@ export function HomeNotFoundTask(props: { onTaskStart: (task: Task) => void }) {
 
   return (
     <div className="flex flex-col items-center">
-      {/* TODO: Display a real image */}
       <Image
-        src="/images/placeholder.png"
+        src="/images/start.png"
         alt="Cover"
         priority={false}
         width="100"
         height="100"
         sizes="100vw"
-        className="w-full rounded-xl"
+        className="w-full rounded-md"
       />
       <h1 className="text-2xl font-bold mt-6">
         Gm, {context?.user.displayName || "shark"} 👋
