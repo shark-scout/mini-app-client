@@ -24,7 +24,7 @@ export function HomeNotFoundTask(props: { onTaskStart: (task: Task) => void }) {
         throw new Error("SDK is not loaded yet");
       }
 
-      const fid = context?.client.clientFid;
+      const fid = context?.user.fid;
       if (!fid) {
         throw new Error("FID is not available");
       }

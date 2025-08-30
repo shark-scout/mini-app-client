@@ -20,11 +20,11 @@ export default function HomePage() {
     // TODO: Remove this code before release
     if (
       process.env.NODE_ENV !== "development" &&
-      !isUserDev(context?.client?.clientFid)
+      !isUserDev(context?.user.fid)
     ) {
       return;
     }
-    const fid = context?.client.clientFid;
+    const fid = context?.user.fid;
     if (isSDKLoaded && fid) {
       axios
         .get(`${backendConfig.url}/api/tasks/${fid}`)
@@ -42,10 +42,7 @@ export default function HomePage() {
   }, [isSDKLoaded, context]);
 
   // TODO: Remove this code before release
-  if (
-    process.env.NODE_ENV !== "development" &&
-    !isUserDev(context?.client?.clientFid)
-  ) {
+  if (process.env.NODE_ENV !== "development" && !isUserDev(context?.user.fid)) {
     return (
       <main className="max-w-xl mx-auto px-4 py-8">
         <div className="flex flex-col items-center">
