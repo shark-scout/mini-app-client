@@ -42,7 +42,7 @@ export function HomeCompletedTask(props: { task: Task }) {
         sizes="100vw"
         className="w-full rounded-xl"
       />
-      <h1 className="text-2xl font-bold mt-6">It&apos;s unbelievable!</h1>
+      <h1 className="text-2xl font-bold mt-6">It&apos;s unbelievable 🤯</h1>
       {/* TODO: Add disclaimer */}
       <p className="text-center mt-4">{displayData.subtitle1}</p>
       <p className="text-center mt-4">{displayData.subtitle2}</p>

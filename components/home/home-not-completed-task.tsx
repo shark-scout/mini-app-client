@@ -38,7 +38,7 @@ export function HomeNotCompletedTask() {
         sizes="100vw"
         className="w-full rounded-xl"
       />
-      <h1 className="text-2xl font-bold mt-6">Analyzing the data...</h1>
+      <h1 className="text-2xl font-bold mt-6">Analyzing the data... ⌛</h1>
       <p className="text-center mt-4">
         Querying thousands of wallets takes time, but the result is worth the
         wait
