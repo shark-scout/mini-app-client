@@ -3,6 +3,7 @@
 import { Home } from "@/components/home/home";
 import { backendConfig } from "@/config/backend";
 import useError from "@/hooks/use-error";
+import { isUserDev } from "@/lib/dev";
 import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
 import axios from "axios";
@@ -17,7 +18,10 @@ export default function HomePage() {
   // Load task data
   useEffect(() => {
     // TODO: Remove this code before release
-    if (process.env.NODE_ENV !== "development") {
+    if (
+      process.env.NODE_ENV !== "development" &&
+      !isUserDev(context?.client?.clientFid)
+    ) {
       return;
     }
     const fid = context?.client.clientFid;
@@ -38,7 +42,10 @@ export default function HomePage() {
   }, [isSDKLoaded, context]);
 
   // TODO: Remove this code before release
-  if (process.env.NODE_ENV !== "development") {
+  if (
+    process.env.NODE_ENV !== "development" &&
+    !isUserDev(context?.client?.clientFid)
+  ) {
     return (
       <main className="max-w-xl mx-auto px-4 py-8">
         <div className="flex flex-col items-center">
