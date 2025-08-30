@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 
 export function errorToString(error: unknown): string {
-  let message = JSON.stringify(error, (key, value) =>
+  let message = JSON.stringify(error, (_, value) =>
     typeof value === "bigint" ? value.toString() : value
   );
   if (error instanceof Error) {
