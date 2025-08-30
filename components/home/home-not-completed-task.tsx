@@ -1,3 +1,5 @@
+"use client";
+
 import { useMiniApp } from "@neynar/react";
 import { BellIcon } from "lucide-react";
 import Image from "next/image";

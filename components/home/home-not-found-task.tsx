@@ -1,3 +1,5 @@
+"use client";
+
 import { backendConfig } from "@/config/backend";
 import { demoTasks } from "@/demo/tasks";
 import useError from "@/hooks/use-error";
