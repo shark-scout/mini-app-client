@@ -6,4 +6,7 @@ export const appConfig = {
   links: {
     farcaster: "https://farcaster.xyz/kiv1n.eth",
   },
+  buttonTitle: "Calculate Your Network Cap",
+  splashImageUrl: "https://miniapp.sharkscout.tech/logo.png",
+  splashBackgroundColor: "#f8f9fa",
 };

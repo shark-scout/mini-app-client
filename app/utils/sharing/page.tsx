@@ -19,13 +19,13 @@ export async function generateMetadata({
     version: "1",
     imageUrl: `${appConfig.url}${displayData.imagePath}`,
     button: {
-      title: `Calculate Your Network Cap`,
+      title: appConfig.buttonTitle,
       action: {
         type: "launch_miniapp",
         url: appConfig.url,
         name: appConfig.name,
-        splashImageUrl: `${appConfig.url}/logo.png`,
-        splashBackgroundColor: "#f8f9fa",
+        splashImageUrl: appConfig.splashImageUrl,
+        splashBackgroundColor: appConfig.splashBackgroundColor,
       },
     },
   };
