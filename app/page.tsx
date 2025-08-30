@@ -33,6 +33,17 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSDKLoaded, context]);
 
+  // TODO: Remove this code before release
+  if (process.env.NODE_ENV !== "development") {
+    return (
+      <main className="max-w-xl mx-auto px-4 py-8">
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl font-bold">⌛ Release soon...</h1>
+        </div>
+      </main>
+    );
+  }
+
   // Display home if task is loaded
   if (task || task === null) {
     return (
