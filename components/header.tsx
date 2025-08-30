@@ -1,6 +1,5 @@
 import { appConfig } from "@/config/app";
 import Link from "next/link";
-import { Button } from "./ui/button";
 
 export function Header() {
   return (
@@ -16,8 +15,8 @@ export function Header() {
         </div>
         {/* Right part */}
         <div className="flex flex-1 items-center justify-end gap-4">
-          {/* TODO: Display a block about premium features */}
-          <Button variant="outline">Get Premium</Button>
+          {/* TODO: Display button and block about premium features */}
+          {/* <Button variant="outline">Get Premium</Button> */}
         </div>
       </div>
     </header>
