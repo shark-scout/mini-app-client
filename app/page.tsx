@@ -1,22 +1,36 @@
 "use client";
 
 import { Home } from "@/components/home/home";
-import { demoTasks } from "@/demo/tasks";
+import { backendConfig } from "@/config/backend";
+import useError from "@/hooks/use-error";
 import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
+import axios from "axios";
 import { Loader2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
   const { isSDKLoaded, context } = useMiniApp();
+  const { handleError } = useError();
   const [task, setTask] = useState<Task | null | undefined>();
 
   // Load task data
-  // TODO: Implement
   useEffect(() => {
-    if (isSDKLoaded) {
-      setTask(demoTasks.notLoaded);
+    const fid = context?.client.clientFid;
+    if (isSDKLoaded && fid) {
+      axios
+        .get(`${backendConfig.url}/api/tasks/${fid}`)
+        .then(({ data }) => setTask(data.task))
+        .catch((error) => {
+          // If 404 error, set task to null
+          if (axios.isAxiosError(error) && error.response?.status === 404) {
+            setTask(null);
+          } else {
+            handleError(error, "Failed to load data, try again later");
+          }
+        });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSDKLoaded, context]);
 
   // Display home if task is loaded

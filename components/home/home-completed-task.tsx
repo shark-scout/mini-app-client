@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Button } from "../ui/button";
 
 export function HomeCompletedTask(props: { task: Task }) {
-  const { isSDKLoaded, actions } = useMiniApp();
+  const { isSDKLoaded, context, actions } = useMiniApp();
 
   const displayData = balancesUsdValueToDisplayData(
     props.task.result?.balancesUsdValue
@@ -16,7 +16,12 @@ export function HomeCompletedTask(props: { task: Task }) {
 
   async function handleShareResult() {
     if (!isSDKLoaded) {
-      toast.info("SDK is not loaded yet");
+      toast.warning("SDK is not loaded yet");
+      return;
+    }
+
+    if (!context?.client) {
+      toast.warning("You need to be logged in to share the result");
       return;
     }
 
@@ -26,7 +31,7 @@ export function HomeCompletedTask(props: { task: Task }) {
         `${appConfig.url}/utils/sharing?balancesUsdValue=${props.task.result?.balancesUsdValue}`,
       ],
     });
-    if (result.cast) {
+    if (result?.cast) {
       toast.success("Result shared");
     }
   }

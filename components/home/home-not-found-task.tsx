@@ -1,21 +1,34 @@
+import { backendConfig } from "@/config/backend";
 import { demoTasks } from "@/demo/tasks";
 import useError from "@/hooks/use-error";
 import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
+import axios from "axios";
 import { Loader2Icon, RocketIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "../ui/button";
 
 export function HomeNotFoundTask(props: { onTaskStart: (task: Task) => void }) {
-  const { context } = useMiniApp();
+  const { isSDKLoaded, context } = useMiniApp();
   const { handleError } = useError();
   const [isProsessing, setIsProsessing] = useState(false);
 
-  // TODO: Implement
   async function handleStartTask() {
     try {
       setIsProsessing(true);
+
+      if (!isSDKLoaded) {
+        throw new Error("SDK is not loaded yet");
+      }
+
+      const fid = context?.client.clientFid;
+      if (!fid) {
+        throw new Error("FID is not available");
+      }
+
+      await axios.post(`${backendConfig.url}/api/tasks/start`, { fid });
+
       props.onTaskStart(demoTasks.pending);
     } catch (error) {
       handleError(error, "Failed to start calculations, try again later");

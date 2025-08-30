@@ -11,16 +11,19 @@ export function HomeNotCompletedTask() {
     context?.client.added || false
   );
 
-  console.log({ added: context?.client.added, notificationsEnabled });
-
   async function handleEnableNotifications() {
     if (!isSDKLoaded) {
-      toast.info("SDK is not loaded yet");
+      toast.warning("SDK is not loaded yet");
+      return;
+    }
+
+    if (!context?.client) {
+      toast.warning("You need to be logged in to share the result");
       return;
     }
 
     const result = await actions.addMiniApp();
-    if (result.notificationDetails) {
+    if (result?.notificationDetails) {
       setNotificationsEnabled(true);
       toast.success("Notifications enabled");
     }
