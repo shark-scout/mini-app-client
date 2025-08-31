@@ -4,7 +4,7 @@ import { Home } from "@/components/home/home";
 import { backendConfig } from "@/config/backend";
 import { posthogConfig } from "@/config/posthog";
 import useError from "@/hooks/use-error";
-import { isUserDev } from "@/lib/dev";
+import { isAccessible } from "@/lib/access";
 import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
 import axios from "axios";
@@ -20,10 +20,7 @@ export default function HomePage() {
   // Load task data
   useEffect(() => {
     // TODO: Remove this code before release
-    if (
-      process.env.NODE_ENV !== "development" &&
-      !isUserDev(context?.user.fid)
-    ) {
+    if (!isAccessible(context?.user.fid)) {
       return;
     }
     const fid = context?.user.fid;
@@ -52,7 +49,7 @@ export default function HomePage() {
   }, [isSDKLoaded, context?.user.fid]);
 
   // TODO: Remove this code before release
-  if (process.env.NODE_ENV !== "development" && !isUserDev(context?.user.fid)) {
+  if (!isAccessible(context?.user.fid)) {
     return (
       <main className="max-w-xl mx-auto px-4 py-8">
         <div className="flex flex-col items-center">
