@@ -1,9 +1,11 @@
 "use client";
 
 import { appConfig } from "@/config/app";
+import { posthogConfig } from "@/config/posthog";
 import { useMiniApp } from "@neynar/react";
 import { PencilIcon } from "lucide-react";
 import Link from "next/link";
+import posthog from "posthog-js";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -17,6 +19,7 @@ export function Header() {
   const { actions } = useMiniApp();
 
   async function handleGetPremium() {
+    posthog.capture(posthogConfig.events.getPremiumClicked);
     await actions.viewProfile({ fid: appConfig.developer.fid });
   }
 

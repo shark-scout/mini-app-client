@@ -1,10 +1,12 @@
 "use client";
 
 import { appConfig } from "@/config/app";
+import { posthogConfig } from "@/config/posthog";
 import { balancesUsdValueToDisplayData } from "@/lib/converters";
 import { useMiniApp } from "@neynar/react";
 import { PencilIcon, ShareIcon } from "lucide-react";
 import Image from "next/image";
+import posthog from "posthog-js";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
@@ -17,6 +19,8 @@ export function HomeCompletedTask(props: {
   const displayData = balancesUsdValueToDisplayData(props.balancesUsdValue);
 
   async function handleShareResult() {
+    posthog.capture(posthogConfig.events.shareResultClicked);
+
     const result = await actions.composeCast({
       text: `${displayData.postPart1}\n\n${displayData.postPart2}\n\nWhat's your network's cap?`,
       embeds: [
@@ -24,11 +28,13 @@ export function HomeCompletedTask(props: {
       ],
     });
     if (result?.cast) {
+      posthog.capture(posthogConfig.events.resultShared);
       toast.success("Result shared");
     }
   }
 
   async function handleGetPremium() {
+    posthog.capture(posthogConfig.events.getPremiumClicked);
     await actions.viewProfile({ fid: appConfig.developer.fid });
   }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { backendConfig } from "@/config/backend";
+import { posthogConfig } from "@/config/posthog";
 import { demoTasks } from "@/demo/tasks";
 import useError from "@/hooks/use-error";
 import { Task } from "@/types/task";
@@ -8,6 +9,7 @@ import { useMiniApp } from "@neynar/react";
 import axios from "axios";
 import { Loader2Icon, RocketIcon } from "lucide-react";
 import Image from "next/image";
+import posthog from "posthog-js";
 import { useState } from "react";
 import { Button } from "../ui/button";
 
@@ -20,12 +22,16 @@ export function HomeNotFoundTask(props: { onTaskStart: (task: Task) => void }) {
     try {
       setIsProsessing(true);
 
+      posthog.capture(posthogConfig.events.startTaskClicked);
+
       const fid = context?.user.fid;
       if (!fid) {
         throw new Error("FID is not available");
       }
 
       await axios.post(`${backendConfig.url}/api/tasks/start`, { fid });
+
+      posthog.capture(posthogConfig.events.taskStarted);
 
       props.onTaskStart(demoTasks.pending);
     } catch (error) {

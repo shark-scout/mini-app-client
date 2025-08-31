@@ -1,8 +1,10 @@
 "use client";
 
+import { posthogConfig } from "@/config/posthog";
 import { useMiniApp } from "@neynar/react";
 import { BellIcon } from "lucide-react";
 import Image from "next/image";
+import posthog from "posthog-js";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
@@ -14,8 +16,11 @@ export function HomeNotCompletedTask() {
   );
 
   async function handleEnableNotifications() {
+    posthog.capture(posthogConfig.events.enableNotificationsClicked);
+
     const result = await actions.addMiniApp();
     if (result?.notificationDetails) {
+      posthog.capture(posthogConfig.events.notificationsEnabled);
       setNotificationsEnabled(true);
       toast.success("Notifications enabled");
     }

@@ -2,6 +2,13 @@ export const posthogConfig = {
   events: {
     error: "error_occurred",
     taskLoaded: "task_loaded",
+    startTaskClicked: "start_task_clicked",
+    taskStarted: "task_started",
+    enableNotificationsClicked: "enable_notifications_clicked",
+    notificationsEnabled: "notifications_enabled",
+    shareResultClicked: "share_result_clicked",
+    resultShared: "result_shared",
+    getPremiumClicked: "get_premium_clicked",
   },
   properties: {
     message: "message",
