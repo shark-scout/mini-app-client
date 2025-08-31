@@ -64,8 +64,8 @@ export function balancesUsdValueToDisplayData(
 
   if (value > 5000) {
     imagePath = "/images/results/over-5k.png";
-    subtitle2 = `If you sold it all, you could buy a hot dog stand for a day and only accept payments in meme coins`;
-    postPart2 = `If we sold it all, we could buy a hot dog stand for a day and only accept payments in meme coins 🌭`;
+    subtitle2 = `If you sold it all, you could make a down payment on one singular Lambo wheel`;
+    postPart2 = `If we sold it all, we could make a down payment on one singular Lambo wheel 🏎️`;
   }
 
   if (value > 7500) {
