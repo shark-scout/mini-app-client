@@ -3,6 +3,7 @@
 import { Home } from "@/components/home/home";
 import { backendConfig } from "@/config/backend";
 import { posthogConfig } from "@/config/posthog";
+import { demoTasks } from "@/demo/tasks";
 import useError from "@/hooks/use-error";
 import { isAccessible } from "@/lib/access";
 import { Task } from "@/types/task";
@@ -13,9 +14,11 @@ import posthog from "posthog-js";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const { isSDKLoaded, context } = useMiniApp();
+  const { context } = useMiniApp();
   const { handleError } = useError();
-  const [task, setTask] = useState<Task | null | undefined>();
+  const [task, setTask] = useState<Task | null | undefined>(
+    demoTasks.completed
+  );
 
   // Load task data
   useEffect(() => {
@@ -24,7 +27,7 @@ export default function HomePage() {
       return;
     }
     const fid = context?.user.fid;
-    if (isSDKLoaded && fid) {
+    if (fid) {
       axios
         .get(`${backendConfig.url}/api/tasks/${fid}`)
         .then(({ data }) => {
@@ -46,7 +49,7 @@ export default function HomePage() {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSDKLoaded, context?.user.fid]);
+  }, [context?.user.fid]);
 
   // TODO: Remove this code before release
   if (!isAccessible(context?.user.fid)) {

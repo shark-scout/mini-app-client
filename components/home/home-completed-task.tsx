@@ -12,21 +12,11 @@ import { Separator } from "../ui/separator";
 export function HomeCompletedTask(props: {
   balancesUsdValue?: number | string;
 }) {
-  const { isSDKLoaded, context, actions } = useMiniApp();
+  const { actions } = useMiniApp();
 
   const displayData = balancesUsdValueToDisplayData(props.balancesUsdValue);
 
   async function handleShareResult() {
-    if (!isSDKLoaded) {
-      toast.warning("SDK is not loaded yet");
-      return;
-    }
-
-    if (!context?.client) {
-      toast.warning("You need to be logged in to share the result");
-      return;
-    }
-
     const result = await actions.composeCast({
       text: `${displayData.postPart1}\n\n${displayData.postPart2}\n\nWhat's your network's cap?`,
       embeds: [

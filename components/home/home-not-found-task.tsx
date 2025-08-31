@@ -12,17 +12,13 @@ import { useState } from "react";
 import { Button } from "../ui/button";
 
 export function HomeNotFoundTask(props: { onTaskStart: (task: Task) => void }) {
-  const { isSDKLoaded, context } = useMiniApp();
+  const { context } = useMiniApp();
   const { handleError } = useError();
   const [isProsessing, setIsProsessing] = useState(false);
 
   async function handleStartTask() {
     try {
       setIsProsessing(true);
-
-      if (!isSDKLoaded) {
-        throw new Error("SDK is not loaded yet");
-      }
 
       const fid = context?.user.fid;
       if (!fid) {

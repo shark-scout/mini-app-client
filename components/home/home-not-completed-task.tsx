@@ -8,22 +8,12 @@ import { toast } from "sonner";
 import { Button } from "../ui/button";
 
 export function HomeNotCompletedTask() {
-  const { isSDKLoaded, context, actions } = useMiniApp();
+  const { context, actions } = useMiniApp();
   const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(
     context?.client.added || false
   );
 
   async function handleEnableNotifications() {
-    if (!isSDKLoaded) {
-      toast.warning("SDK is not loaded yet");
-      return;
-    }
-
-    if (!context?.client) {
-      toast.warning("You need to be logged in to share the result");
-      return;
-    }
-
     const result = await actions.addMiniApp();
     if (result?.notificationDetails) {
       setNotificationsEnabled(true);
