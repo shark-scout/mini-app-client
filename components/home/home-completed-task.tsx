@@ -44,8 +44,20 @@ export function HomeCompletedTask(props: {
         className="w-full rounded-md"
       />
       <h1 className="text-2xl font-bold mt-6">It&apos;s unbelievable 🤯</h1>
-      {/* TODO: Add disclaimer */}
-      <p className="text-center mt-4">{displayData.subtitle1}</p>
+      <p className="text-center mt-4 inline">
+        {displayData.subtitle1.replaceAll("crypto", "")}
+        <Button
+          variant="link"
+          onClick={() =>
+            toast.info(
+              "Calculation based on Base/Farcaster primary wallets in the Base network"
+            )
+          }
+          className="text-base p-0"
+        >
+          crypto
+        </Button>
+      </p>
       <p className="text-center mt-4">{displayData.subtitle2}</p>
       <Button onClick={handleShareResult} className="mt-6">
         <ShareIcon /> Share The Result
