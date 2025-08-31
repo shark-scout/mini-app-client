@@ -16,6 +16,10 @@ import {
 export function Header() {
   const { actions } = useMiniApp();
 
+  async function handleGetPremium() {
+    await actions.viewProfile({ fid: appConfig.developer.fid });
+  }
+
   return (
     <header className="sticky top-0 z-40 bg-background border-b">
       <div className="container mx-auto px-4 flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
@@ -54,11 +58,7 @@ export function Header() {
                 🔔 Smart Alerts: Get notified when a key account makes a big
                 trade
               </p>
-              <Button
-                onClick={() =>
-                  actions.viewProfile({ fid: appConfig.developer.fid })
-                }
-              >
+              <Button onClick={handleGetPremium}>
                 <PencilIcon /> Contact {appConfig.developer.name} To Get Access
               </Button>
             </DialogContent>
