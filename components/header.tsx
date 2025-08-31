@@ -39,24 +39,25 @@ export function Header() {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader className="text-left">
-                <DialogTitle>Go Beyond the Memes!</DialogTitle>
+                <DialogTitle>Get Real Alpha!</DialogTitle>
               </DialogHeader>
-              <p className="font-semibold">Get Real Alpha!</p>
               <p>
-                SharkScout Premium turns your social graph into an
-                alpha-generating machine
+                <span className="font-semibold">SharkScout Premium</span> turns
+                your social graph into an alpha-generating machine
               </p>
               <p>
-                📈 Network Trading Trends: See what your network is
-                buying/selling in real-time
+                <span className="font-semibold">
+                  📈 Network Trading Trends:
+                </span>{" "}
+                See what your network is buying/selling in real-time
               </p>
               <p>
-                🤖 AI Insights: Get signals on which wallets are making the
-                smartest moves
+                <span className="font-semibold">🤖 AI Insights:</span> Get
+                signals on which wallets are making the smartest moves
               </p>
               <p>
-                🔔 Smart Alerts: Get notified when a key account makes a big
-                trade
+                <span className="font-semibold">🔔 Smart Alerts:</span> Get
+                notified when a key account makes a big trade
               </p>
               <Button onClick={handleGetPremium}>
                 <PencilIcon /> Contact {appConfig.developer.name} To Get Access

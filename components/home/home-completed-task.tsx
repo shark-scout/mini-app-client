@@ -51,30 +51,36 @@ export function HomeCompletedTask(props: {
         <ShareIcon /> Share The Result
       </Button>
       <Separator className="my-6" />
-      <div className="w-full bg-primary rounded-md p-4">
-        <div className="flex flex-col gap-1 text-primary-foreground">
-          <p className="text-2xl font-bold">Go Beyond the Memes!</p>
-          <p className="text-xl font-semibold">Get Real Alpha!</p>
-        </div>
-        <Separator className="my-4" />
-        <div className="flex flex-col gap-4 text-primary-foreground mt-2">
-          <p>
-            SharkScout Premium turns your social graph into an alpha-generating
-            machine{" "}
-          </p>
-          <p>
-            📈 Network Trading Trends: See what your network is buying/selling
-            in real-time
-          </p>
-          <p>
-            🤖 AI Insights: Get signals on which wallets are making the smartest
-            moves
-          </p>
-          <p>
-            🔔 Smart Alerts: Get notified when a key account makes a big trade
+      <div className="w-full bg-accent rounded-md p-6">
+        <div className="text-accent-foreground">
+          <p className="font-semibold">Go Beyond the Memes!</p>
+          <p className="text-3xl font-bold">Get Real Alpha!</p>
+          <p className="mt-6">
+            <span className="font-semibold">SharkScout Premium</span> turns your
+            social graph into an alpha-generating machine
           </p>
         </div>
-        <Button variant="secondary" onClick={handleGetPremium} className="mt-4">
+        <div className="flex flex-col gap-6 text-accent-foreground mt-6">
+          <div>
+            <p className="text-lg font-semibold">📈 Network Trading Trends</p>
+            <p className="mt-1">
+              See what your network is buying/selling in real-time
+            </p>
+          </div>
+          <div>
+            <p className="text-lg font-semibold">🤖 AI Insights</p>
+            <p className="mt-1">
+              Get signals on which wallets are making the smartest moves
+            </p>
+          </div>
+          <div>
+            <p className="text-lg font-semibold">🔔 Smart Alerts</p>
+            <p className="mt-1">
+              Get notified when a key account makes a big trade
+            </p>
+          </div>
+        </div>
+        <Button onClick={handleGetPremium} className="mt-6">
           <PencilIcon /> Contact {appConfig.developer.name} To Get Access
         </Button>
       </div>
