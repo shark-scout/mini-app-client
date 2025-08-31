@@ -1,5 +1,6 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { Identifier } from "@/components/identifier";
 import { MiniAppProvider } from "@/components/mini-app-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { appConfig } from "@/config/app";
@@ -50,6 +51,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <MiniAppProvider>
+            <Identifier />
             <div className="min-h-screen flex flex-col">
               <Header />
               <div className="flex-1">{children}</div>

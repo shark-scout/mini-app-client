@@ -51,18 +51,6 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSDKLoaded, context?.user.fid]);
 
-  // Register user's FID in PostHog
-  useEffect(() => {
-    const fid = context?.user.fid;
-    if (isSDKLoaded && fid) {
-      // Identify the user (creates/updates user profile)
-      posthog.identify(fid.toString(), { fid: fid });
-
-      // Register as super property (includes in all events)
-      posthog.register({ fid: fid });
-    }
-  }, [isSDKLoaded, context?.user.fid]);
-
   // TODO: Remove this code before release
   if (process.env.NODE_ENV !== "development" && !isUserDev(context?.user.fid)) {
     return (
