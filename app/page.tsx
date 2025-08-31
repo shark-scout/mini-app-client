@@ -3,7 +3,6 @@
 import { Home } from "@/components/home/home";
 import { backendConfig } from "@/config/backend";
 import { posthogConfig } from "@/config/posthog";
-import { demoTasks } from "@/demo/tasks";
 import useError from "@/hooks/use-error";
 import { isAccessible } from "@/lib/access";
 import { Task } from "@/types/task";
@@ -16,9 +15,7 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
   const { context } = useMiniApp();
   const { handleError } = useError();
-  const [task, setTask] = useState<Task | null | undefined>(
-    demoTasks.completed
-  );
+  const [task, setTask] = useState<Task | null | undefined>();
 
   // Load task data
   useEffect(() => {
