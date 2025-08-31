@@ -20,6 +20,21 @@ const firaCode = Fira_Code({
   subsets: ["latin"],
 });
 
+const fcMetadata = {
+  version: "1",
+  imageUrl: `${appConfig.heroImageUrl}`,
+  button: {
+    title: appConfig.heroButtonTitle,
+    action: {
+      type: "launch_miniapp",
+      url: appConfig.url,
+      name: appConfig.name,
+      splashImageUrl: appConfig.logoUrl,
+      splashBackgroundColor: appConfig.logoBackgroundColor,
+    },
+  },
+};
+
 export const metadata: Metadata = {
   title: {
     default: `${appConfig.name} - ${appConfig.description}`,
@@ -28,6 +43,10 @@ export const metadata: Metadata = {
   description: appConfig.description,
   icons: {
     icon: "/favicon.ico",
+  },
+  other: {
+    "fc:miniapp": JSON.stringify(fcMetadata),
+    "fc:frame": JSON.stringify(fcMetadata),
   },
 };
 
