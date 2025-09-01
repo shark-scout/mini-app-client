@@ -1,5 +1,6 @@
 "use client";
 
+import { baseConfig } from "@/config/base";
 import { posthogConfig } from "@/config/posthog";
 import { useMiniApp } from "@neynar/react";
 import { BellIcon } from "lucide-react";
@@ -10,21 +11,8 @@ import { toast } from "sonner";
 import { Button } from "../ui/button";
 
 export function HomeNotCompletedTask() {
-  const { context, actions } = useMiniApp();
-  const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(
-    context?.client.added || false
-  );
-
-  async function handleEnableNotifications() {
-    posthog.capture(posthogConfig.events.enableNotificationsClicked);
-
-    const result = await actions.addMiniApp();
-    if (result?.notificationDetails) {
-      posthog.capture(posthogConfig.events.notificationsEnabled);
-      setNotificationsEnabled(true);
-      toast.success("Notifications enabled");
-    }
-  }
+  const { context } = useMiniApp();
+  const isBaseApp = context?.client.clientFid === baseConfig.clientFid;
 
   return (
     <div className="flex flex-col items-center">
@@ -42,22 +30,58 @@ export function HomeNotCompletedTask() {
         Querying thousands of wallets takes time, but the result is worth the
         wait
       </p>
-      {notificationsEnabled ? (
-        <p className="text-center mt-4">
-          We&apos;ll serve you a notification when it&apos;s ready
-        </p>
+      {isBaseApp ? (
+        <HomeNotCompletedTaskBase />
       ) : (
-        <>
-          <p className="text-center mt-4">
-            Hit the button below, and we&apos;ll serve you a notification when
-            it&apos;s ready
-          </p>
-          <Button onClick={handleEnableNotifications} className="mt-6">
-            <BellIcon />
-            Enable Notifications
-          </Button>
-        </>
+        <HomeNotCompletedTaskFarcaster />
       )}
     </div>
+  );
+}
+
+function HomeNotCompletedTaskFarcaster() {
+  const { context, actions } = useMiniApp();
+  const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>();
+  const added = context?.client.added;
+
+  async function handleEnableNotifications() {
+    posthog.capture(posthogConfig.events.enableNotificationsClicked);
+
+    const result = await actions.addMiniApp();
+    if (result?.notificationDetails) {
+      posthog.capture(posthogConfig.events.notificationsEnabled);
+      setNotificationsEnabled(true);
+      toast.success("Notifications enabled");
+    }
+  }
+
+  if (added || notificationsEnabled) {
+    return (
+      <p className="text-center mt-4">
+        We&apos;ll serve you a notification when it&apos;s ready
+      </p>
+    );
+  }
+
+  return (
+    <>
+      <p className="text-center mt-4">
+        Hit the button below, and we&apos;ll serve you a notification when
+        it&apos;s ready
+      </p>
+      <Button onClick={handleEnableNotifications} className="mt-6">
+        <BellIcon />
+        Enable Notifications
+      </Button>
+    </>
+  );
+}
+
+function HomeNotCompletedTaskBase() {
+  return (
+    <p className="text-center mt-4">
+      Check back soon, and don&apos;t forget to save this app so you don&apos;t
+      lose it
+    </p>
   );
 }
