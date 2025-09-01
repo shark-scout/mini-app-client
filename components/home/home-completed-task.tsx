@@ -80,21 +80,24 @@ export function HomeCompletedTask(props: {
         </div>
         <div className="flex flex-col gap-6 text-accent-foreground mt-6">
           <div>
-            <p className="text-lg font-semibold">📈 Network Trading Trends</p>
+            <p className="text-lg font-semibold">📈 Trends</p>
             <p className="mt-1">
-              See what your network is buying/selling in real-time
+              Track the exact moves your network is making: buys, sells, swaps,
+              mints, and airdrops
             </p>
           </div>
           <div>
-            <p className="text-lg font-semibold">🤖 AI Insights</p>
+            <p className="text-lg font-semibold">💡 AI Insights</p>
             <p className="mt-1">
-              Get signals on which wallets are making the smartest moves
+              Our AI analyzes your network to surface hidden gems, emerging
+              narratives, and alpha opportunities
             </p>
           </div>
           <div>
-            <p className="text-lg font-semibold">🔔 Smart Alerts</p>
+            <p className="text-lg font-semibold">🔔 Smart Notifications</p>
             <p className="mt-1">
-              Get notified when a key account makes a big trade
+              Be the first to know about trending tokens, whale accumulations,
+              and market-moving activities
             </p>
           </div>
         </div>

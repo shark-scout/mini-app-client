@@ -49,18 +49,19 @@ export function Header() {
                 your social graph into an alpha-generating machine
               </p>
               <p>
-                <span className="font-semibold">
-                  📈 Network Trading Trends:
-                </span>{" "}
-                See what your network is buying/selling in real-time
+                <span className="font-semibold">📈 Trends:</span> Track the
+                exact moves your network is making: buys, sells, swaps, mints,
+                and airdrops
               </p>
               <p>
-                <span className="font-semibold">🤖 AI Insights:</span> Get
-                signals on which wallets are making the smartest moves
+                <span className="font-semibold">💡 AI Insights:</span> Our AI
+                analyzes your network to surface hidden gems, emerging
+                narratives, and alpha opportunities
               </p>
               <p>
-                <span className="font-semibold">🔔 Smart Alerts:</span> Get
-                notified when a key account makes a big trade
+                <span className="font-semibold">🔔 Smart Notifications:</span>{" "}
+                Be the first to know about trending tokens, whale accumulations,
+                and market-moving activities
               </p>
               <Button onClick={handleGetPremium}>
                 <PencilIcon /> Contact {appConfig.developer.name} To Get Access
