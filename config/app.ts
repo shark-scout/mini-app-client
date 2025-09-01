@@ -2,7 +2,7 @@ export const appConfig = {
   url: "https://miniapp.sharkscout.tech",
   emoji: "🦈",
   name: "SharkScout",
-  description: "Insights from your social graph on Base & Farcaster",
+  description: "Your social graph insights on Base & Farcaster",
   developer: {
     name: "@kiv1n",
     fid: 1159869,
