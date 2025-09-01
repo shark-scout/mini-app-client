@@ -15,5 +15,7 @@ export const posthogConfig = {
     error: "error",
     stack: "stack",
     task: "task",
+    fid: "fid",
+    clientFid: "client_fid",
   },
 };
