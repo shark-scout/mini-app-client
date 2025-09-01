@@ -4,7 +4,6 @@ import { Home } from "@/components/home/home";
 import { backendConfig } from "@/config/backend";
 import { posthogConfig } from "@/config/posthog";
 import useError from "@/hooks/use-error";
-import { isAccessible } from "@/lib/access";
 import { Task } from "@/types/task";
 import { useMiniApp } from "@neynar/react";
 import axios from "axios";
@@ -19,10 +18,6 @@ export default function HomePage() {
 
   // Load task data
   useEffect(() => {
-    // TODO: Remove this code before release
-    if (!isAccessible(context?.user.fid)) {
-      return;
-    }
     const fid = context?.user.fid;
     if (fid) {
       axios
@@ -47,17 +42,6 @@ export default function HomePage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context?.user.fid]);
-
-  // TODO: Remove this code before release
-  if (!isAccessible(context?.user.fid)) {
-    return (
-      <main className="max-w-xl mx-auto px-4 py-8">
-        <div className="flex flex-col items-center">
-          <h1 className="text-2xl font-bold">⌛ Release soon...</h1>
-        </div>
-      </main>
-    );
-  }
 
   // Display home if task is loaded
   if (task || task === null) {
