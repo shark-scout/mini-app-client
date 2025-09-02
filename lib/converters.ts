@@ -110,6 +110,12 @@ export function balancesUsdValueToDisplayData(
     postPart2 = `If we sold it all, we could buy a retired F-16 fighter jet and paint it purple with a giant "gm" on the tail ✈️`;
   }
 
+  if (value > 1000 * 1000) {
+    imagePath = "/images/results/over-1m.png";
+    subtitle2 = `If you sold it all, you could buy a private island and host the first annual Hunger Games but for crypto influencers`;
+    postPart2 = `If we sold it all, we could buy a private island and host the first annual Hunger Games but for crypto influencers 🏝️`;
+  }
+
   return {
     imagePath,
     subtitle1,
