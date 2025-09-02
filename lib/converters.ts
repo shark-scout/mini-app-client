@@ -98,14 +98,14 @@ export function balancesUsdValueToDisplayData(
     postPart2 = `If we sold it all, we could build a giant statue of the "this is fine" dog and place it outside the SEC's office 🔥`;
   }
 
-  if (value > 500 * 1000) {
-    imagePath = "/images/results/over-500k.png";
+  if (value > 250 * 1000) {
+    imagePath = "/images/results/over-250k.png";
     subtitle2 = `If you sold it all, you could attempt to buy the naming rights to a newly discovered star and call it "gm"`;
     postPart2 = `If we sold it all, we could attempt to buy the naming rights to a newly discovered star and call it "gm" ⭐`;
   }
 
-  if (value > 1000 * 1000) {
-    imagePath = "/images/results/over-1m.png";
+  if (value > 500 * 1000) {
+    imagePath = "/images/results/over-500k.png";
     subtitle2 = `If you sold it all, you could buy a retired F-16 fighter jet and paint it purple with a giant "gm" on the tail`;
     postPart2 = `If we sold it all, we could buy a retired F-16 fighter jet and paint it purple with a giant "gm" on the tail ✈️`;
   }
