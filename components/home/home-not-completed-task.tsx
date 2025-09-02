@@ -27,8 +27,8 @@ export function HomeNotCompletedTask() {
       />
       <h1 className="text-2xl font-bold mt-6">Analyzing the data... ⌛</h1>
       <p className="text-center mt-4">
-        Querying thousands of wallets takes time, but the result is worth the
-        wait
+        Processing thousands of wallets takes time, and due to high demand, it
+        may take over an hour
       </p>
       {isBaseApp ? (
         <HomeNotCompletedTaskBase />
@@ -80,7 +80,7 @@ function HomeNotCompletedTaskFarcaster() {
 function HomeNotCompletedTaskBase() {
   return (
     <p className="text-center mt-4">
-      Check back soon, and don&apos;t forget to save this app so you don&apos;t
+      Check back later, and don&apos;t forget to save this app so you won&apos;t
       lose it
     </p>
   );
