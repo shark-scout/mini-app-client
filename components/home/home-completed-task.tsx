@@ -56,7 +56,7 @@ export function HomeCompletedTask(props: {
           variant="link"
           onClick={() =>
             toast.info(
-              "Calculation based on Base/Farcaster primary wallets in the Base network"
+              "Calculation based on primary wallets of non-spam users in the Base network"
             )
           }
           className="text-base p-0"
