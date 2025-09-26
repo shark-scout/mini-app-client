@@ -9,6 +9,7 @@ export const posthogConfig = {
     shareResultClicked: "share_result_clicked",
     resultShared: "result_shared",
     getPremiumClicked: "get_premium_clicked",
+    openSharkBattlesClicked: "open_sharkbattles_clicked",
   },
   properties: {
     message: "message",
