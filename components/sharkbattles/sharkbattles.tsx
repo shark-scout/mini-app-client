@@ -35,8 +35,8 @@ export default function SharkBattles() {
         <span className="text-accent">Shark Battles</span>!
       </h2>
       <h4 className="text-xl tracking-tight text-center mt-2">
-        Predict token growth, battle other sharks, and win up to 5,000 $noice
-        every day!
+        Predict token growth, battle other sharks, and win up to 5,000 $noice{" "}
+        <span className="text-accent">every day</span>!
       </h4>
       <Button
         variant="default"
