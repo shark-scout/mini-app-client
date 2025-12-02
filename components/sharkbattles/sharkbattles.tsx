@@ -31,12 +31,11 @@ export default function SharkBattles() {
       />
       {/* Title, subtitle */}
       <h2 className="text-3xl font-bold tracking-tight balance text-center mt-6">
-        Meet our new mini app —{" "}
-        <span className="text-accent">Shark Battles</span>!
+        <span className="text-accent">Shark Battles</span> Season 2 Starts Now!
       </h2>
       <h4 className="text-xl tracking-tight text-center mt-2">
-        Predict token growth, battle other sharks, and win up to 5,000 $noice{" "}
-        <span className="text-accent">every day</span>!
+        Mint assets, earn bites, battle other sharks, and win{" "}
+        <span className="text-accent">$USDC</span> rewards
       </h4>
       <Button
         variant="default"
