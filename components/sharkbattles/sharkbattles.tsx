@@ -31,11 +31,11 @@ export default function SharkBattles() {
       />
       {/* Title, subtitle */}
       <h2 className="text-3xl font-bold tracking-tight balance text-center mt-6">
-        <span className="text-accent">Shark Battles</span> Season 2 Starts Now!
+        <span className="text-accent">Shark Battles</span> are back!
       </h2>
       <h4 className="text-xl tracking-tight text-center mt-2">
-        Mint assets, earn bites, battle other sharks, and win{" "}
-        <span className="text-accent">$USDC</span> rewards
+        Pick a token you predict will perform better, battle other sharks, and
+        earn <span className="text-accent">USDC & Warplets!</span>
       </h4>
       <Button
         variant="default"
