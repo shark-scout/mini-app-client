@@ -31,7 +31,7 @@ export default function SharkBattles() {
       />
       {/* Title, subtitle */}
       <h2 className="text-3xl font-bold tracking-tight balance text-center mt-6">
-        <span className="text-accent">Shark Battles</span> are back!
+        <span className="text-accent">New Shark Battle </span> is LIVE!
       </h2>
       <h4 className="text-xl tracking-tight text-center mt-2">
         Pick a token you predict will perform better, battle other sharks, and
