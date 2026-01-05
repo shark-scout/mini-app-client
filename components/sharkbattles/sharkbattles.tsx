@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { posthogConfig } from "@/config/posthog";
 import { useMiniApp } from "@neynar/react";
-import { SwordsIcon } from "lucide-react";
+import { WandSparklesIcon } from "lucide-react";
 import Image from "next/image";
 import posthog from "posthog-js";
 
@@ -21,8 +21,8 @@ export default function SharkBattles() {
     <div className="h-[calc(100vh-6rem)] max-w-xl mx-auto px-4 py-8 flex flex-col items-center justify-center">
       {/* Image */}
       <Image
-        src="/images/sharkbattles.png"
-        alt="Shark Battles"
+        src="/images/shark-ids.png"
+        alt="Shark IDs"
         priority={false}
         width="100"
         height="100"
@@ -30,12 +30,12 @@ export default function SharkBattles() {
         className="w-full rounded-md"
       />
       {/* Title, subtitle */}
-      <h2 className="text-3xl font-bold tracking-tight balance text-center mt-6">
-        <span className="text-accent">New Shark Battle</span> is LIVE!
+      <h2 className="text-3xl text-accent font-bold tracking-tight balancetext-center mt-6">
+        Mint your Shark ID!
       </h2>
       <h4 className="text-xl tracking-tight text-center mt-2">
-        Pick a token you predict will perform better, battle other sharks, and
-        earn <span className="text-accent">USDC & Warplets!</span>
+        Discover your shark archetype, unlock your 2026 prediction, and join the
+        Shark Battles airdrop!
       </h4>
       <Button
         variant="default"
@@ -43,8 +43,8 @@ export default function SharkBattles() {
         className="mt-6"
         onClick={handleOpenSharkBattles}
       >
-        <SwordsIcon />
-        Open Shark Battles!
+        <WandSparklesIcon />
+        Mint Shark ID & Join Airdrop!
       </Button>
     </div>
   );
