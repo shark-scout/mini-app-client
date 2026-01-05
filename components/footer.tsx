@@ -21,7 +21,7 @@ export function Footer() {
           >
             {appConfig.developer.name}
           </Button>
-          © 2025
+          © 2026
         </p>
       </div>
     </footer>
